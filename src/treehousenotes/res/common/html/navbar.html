@@ -1,0 +1,129 @@
+{{define "navibar"}}
+    <style>
+    #leafnotesimgsm {
+      height: 46px;
+      width: 46px;
+    }
+    #navbarHolder{
+       padding-bottom: 0.5em; 
+       padding-top: 0.5em;
+    }
+    
+    .pointer-links{
+        cursor: pointer;
+    }
+    
+    </style>
+    <nav id="navbarHolder" class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
+      <!-- Toggle Button -->
+      <button class="navbar-toggler navbar-toggler-right" 
+              type="button" 
+              data-toggle="collapse" 
+              data-target="#navbarCollapse" 
+              aria-controls="navbarCollapse" 
+              aria-expanded="false" 
+              aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      
+      <!-- navbar-brand -->
+      <a id="leafnotesbrand" class="navbar-brand" href="StartPage">
+          <img id="leafnotesimgsm" src="../common/img/greenleaf1_sm.png">
+          Leaf Notes
+      </a>
+        
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+            <!-- no use for now
+        <ul class="navbar-nav col align-self-start">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="#">Disabled</a>
+          </li>
+        </ul>
+            -->
+        
+        <ul id="userpanel" class="navbar-nav ml-md-auto">
+            <!-- filled by js.GetLoginUser()-->
+        </ul>
+      </div>
+    </nav>
+    
+    <script>
+    function DocumentOnLoadNavBar(){
+        $("#userpanel").empty();
+        GetLoginUser(showNoUserLogin, showUserNames);
+    }
+    
+    
+    function showNoUserLogin(){       
+       var liuname = $("<li></li>").addClass("nav-item active"); 
+       var unameIn = $("<input></input>").addClass("form-control mr-sm-2"); 
+       unameIn.attr('id', 'uidinput');
+       unameIn.attr('placeholder','user...');
+       unameIn.val("sadmin");
+       unameIn.attr('type','text');
+       liuname.append(unameIn);
+       $("#userpanel").append(liuname);
+              
+       var lipwd = $("<li></li>").addClass("nav-item active"); 
+       var pwdIn = $("<input></input>").addClass("form-control mr-sm-2"); 
+       pwdIn.attr('id', 'pwdinput');
+       pwdIn.val("superadmin");
+       pwdIn.attr('placeholder','password...');
+       pwdIn.attr('type','text');
+       lipwd.append(pwdIn);
+       $("#userpanel").append(lipwd);
+       
+       var lictn = $("<li></li>").addClass("nav-item active"); 
+       var btnLogin = $("<button></button>").text("Login...");
+       btnLogin.addClass("btn btn-outline-success");
+       btnLogin.addClass("pointer-links");
+       
+       btnLogin.click(function(){
+           var user = $("#uidinput").val();
+           var pwd = $("#pwdinput").val();
+           LoginUserAjax(user, pwd);
+       });
+       lictn.append(btnLogin);
+       $("#userpanel").append(lictn);
+       
+       
+       //$("#userpanel").removeClass("offset-md-8");
+       //$("#userpanel").addClass("offset-md-6");
+    }
+    
+    function showUserNames(user){
+       var liName = $("<li></li>");
+       liName.addClass("nav-item active");       
+       var unameA = $("<a></a>").text(user);
+       unameA.addClass("nav-link");
+       unameA.addClass("pointer-links");
+       unameA.click(function(){
+           alert("Currently logged in user is: " + user)
+       });
+       liName.append(unameA);
+       $("#userpanel").append(liName);
+       
+       var liLgout = $("<li></li>");
+       liLgout.addClass("nav-item");
+       var logoutA = $("<a></a>").text("logout");
+       logoutA.addClass("nav-link");
+       logoutA.addClass("pointer-links");
+       logoutA.click(function(){
+           LogoutUser();
+       });
+       liLgout.append(logoutA);
+              
+       $("#userpanel").append(liLgout);
+       
+       //$("#userpanel").removeClass("offset-md-6");
+       //$("#userpanel").addClass("offset-md-8");
+    }
+    
+    </script>
+{{end}}

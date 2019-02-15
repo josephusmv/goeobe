@@ -1,0 +1,92 @@
+.left-nav-bar {
+    background-color: ghostwhite;
+    border-right: solid activeborder thin;
+    padding: 0.7em;
+}
+
+.left-nav-item {
+    margin-bottom: 1rem;
+    border-bottom:  thin;
+}
+
+nav {
+  background-color: steelblue;
+}
+
+main {
+  background-color: wheat;
+}
+
+.fa {
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.collapse.show {
+  visibility: visible;
+}
+.collapsing {
+  visibility: visible;
+  height: 0;
+  -webkit-transition-property: height, visibility;
+  transition-property: height, visibility;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+}
+
+.collapsing.width {
+  -webkit-transition-property: width, visibility;
+  transition-property: width, visibility;
+  width: 0;
+  height: 100%;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+}
+
+.openimage{
+    width: 8%;
+    opacity: 0.5;
+    filter: alpha(opacity=50); /* For IE8 and earlier */
+}
+.openimage:hover {
+    cursor: pointer;
+    width: 10%;
+    opacity: 1;
+    filter: alpha(opacity=10); /* For IE8 and earlier */
+}
+.closeimage{
+    display: none;
+    cursor: pointer;
+    transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -moz-transform: rotate(180deg);
+    -webkit-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    transform: scaleX(-1);
+    -ms-transform: scaleX(-1);
+    -moz-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    -o-transform:  scaleX(-1);
+}
+
+.filter-radio-btn {
+  font-size:90%;
+  cursor: pointer;
+  margin-left: 0.8em;
+}
+
+button.prty-btn {
+  cursor: pointer;
+  font-size:x-small;
+  font-size:x-small;
+  text-align: center;
+  padding: 0;
+  height: 3em;
+  width: 3em;
+}
+
+.trigger-btn  {
+    position: relative;
+    top: -20px;
+    left: 0px;
+}

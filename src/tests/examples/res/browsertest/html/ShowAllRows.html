@@ -1,0 +1,42 @@
+<html>
+    <head>
+        <title> Browser Test HomePage Fetch All Rows</title>
+        <script src="/js/test.js"></script>
+    </head>
+    <body> 
+        <h1>
+            Browser Test HomePage Fetch All Rows --- updated
+        </h1>
+        <h2>
+        This is for purspose of testing full eobe application with browser involved.
+        </h2>
+        </br></br>
+    
+        <div> 
+            <ul>
+            {{ range $key, $value := .KVMap }}
+                <li>
+                <strong>{{ $key }}:</strong>
+                <p> {{ $value }}</p>
+                </li>
+            </br>
+            {{ end }}
+            </ul>
+            
+            <ul>
+            {{ range $key, $value := .Rows }}
+            <li><strong>{{ $key }}:</strong>
+                <ul>
+                    {{ range $k, $v := $value  }}
+                    <li><strong>{{ $k }}:</strong> {{ $v }}</li>
+                    {{ end }}
+                </ul>
+               index $value 1 is: {{index $value 1}} </br> 
+               index $value 2 is: {{index $value 2}} </br>
+            </li>
+            </br>
+            {{ end }}
+            </ul>
+        </div>
+    </body>
+</html>

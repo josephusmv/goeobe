@@ -1,0 +1,4 @@
+curl -GET -i -H "Accept: text/html" http://localhost:8080/IndexPage
+
+curl -POST -i -H "Accept: application/json" http://localhost:8080/IndexPage
+

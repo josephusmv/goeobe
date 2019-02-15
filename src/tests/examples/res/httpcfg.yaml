@@ -1,0 +1,22 @@
+ServerName: "eobeserver"
+ServerVersion:  "0.1"
+
+## Page resources
+Page404FilePath:  "./res/common/html/page404.html"
+TemplateFileList: [
+  "./res/browsertest/html/index.html",
+  "./res/browsertest/html/ShowAllRows.html",
+  "./res/browsertest/html/ShowRowsWithIndex.html",
+  "./res/browsertest/html/ShowRowsOfRange.html",
+  "./res/browsertest/html/headerTest.html"]
+  
+PreloadStaticFiles: false
+DevMode: true  
+
+## Response option headers
+AddXSSProtectionHeader: true
+AddXContentHeader:  true
+AddCharSetHeader: true
+ValHeaderCharSet: "utf-8"
+AddHSTSHeader:  true
+

@@ -1,0 +1,70 @@
+ResourceName: IndexPage
+MethodGET:
+    UnSupport: false
+    QueryParameters: []
+    ActualResources: index.html
+    SupportRespType: [RESP_HTML]
+    APICalls: []
+########
+
+
+ResourceName: OverallPage
+MethodGET:
+    QueryParameters: []
+    ActualResources: ovrlcfg.html
+    SupportRespType: [RESP_HTML]
+########
+
+ResourceName: httpcfg
+MethodGET:
+    QueryParameters: []
+    ActualResources: httpcfg.html
+    SupportRespType: [RESP_HTML]
+########
+
+ResourceName: resdefine
+MethodGET:
+    QueryParameters: []
+    ActualResources: resdefine.html
+    SupportRespType: [RESP_HTML]
+########
+
+ResourceName: dbactions
+MethodGET:
+    QueryParameters: []
+    ActualResources: dbactions.html
+    SupportRespType: [RESP_HTML]
+########
+
+ResourceName: userconst
+MethodGET:
+    QueryParameters: []
+    ActualResources: userconst.html
+    SupportRespType: [RESP_HTML]
+########
+
+ResourceName: apilist
+MethodGET:
+    QueryParameters: []
+    ActualResources: apilist.html
+    SupportRespType: [RESP_HTML]
+########
+
+
+ResourceName: UserInfo
+MethodGET:
+    QueryParameters: []
+    SupportRespType: [RESP_JSON]
+    APICalls: ["(SaveRslt)GetCurrentUser: "]
+MethodPOST:
+    QueryParameters: ["user", "pwd", "permission", "expdays"]
+    ActualResources: 
+    SupportRespType: [RESP_HTML]
+    APICalls: [
+        "GetUserName: ?user",
+        "ValidateInt: ^retAffectedRows, eq, $ValueZero, $EXISTEDUSER",     #user name should not be existed.
+        "RemoteEncrypt: 127.0.0.1,8081, enc, ?pwd",
+        "AddUser: ?user, ^encpwd, ?permission",
+        "ValidateInt: ^retAffectedRows, neq, $ValueZero, $InvalidLogin",
+        "(SaveRslt)LogInUser: ?user, ?expdays"]
+########

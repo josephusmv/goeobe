@@ -1,0 +1,118 @@
+.frameDIV{
+  font-family:arial,sans-serif;
+  font-size:100%;
+  margin:0em;
+  background: transparent;
+  padding:0rm;
+  height: 50em;
+}
+
+.box-shadow {
+  text-decoration:none;
+  color:#000;
+  background:#ffc;
+  display:block;
+  height:10em;
+  width:10em;
+  padding:1em;
+  /* Firefox */
+  -moz-box-shadow:5px 5px 7px rgba(33,33,33,1);
+  /* Safari+Chrome */
+  -webkit-box-shadow: 5px 5px 7px rgba(33,33,33,.7);
+  /* Opera */
+  box-shadow: 5px 5px 7px rgba(33,33,33,.7);
+}
+
+.leaf-note {
+  height:10em;
+  width:10em;
+  margin:1em;
+  float:left;
+}
+
+.leaf-notes-ul {
+  list-style:none;  
+  overflow:hidden;
+  padding:0em;  
+  margin:0em;
+  float:left;
+}
+
+.leaft-notes-link {
+  cursor: default;
+  text-decoration: none;
+  color:#000;
+  background:#ffc;
+  display:block;
+  height:10em;
+  width:10em;
+  padding:1em;
+}
+
+.leaft-notes-link:hover, .leaft-notes-link:focus{
+  -moz-box-shadow:10px 10px 7px rgba(0,0,0,.7);
+  -webkit-box-shadow: 10px 10px 7px rgba(0,0,0,.7);
+  box-shadow:10px 10px 7px rgba(0,0,0,.7);
+  -webkit-transform: scale(1.25);
+  -moz-transform: scale(1.25);
+  -o-transform: scale(1.25);
+  position:relative;
+  z-index:5;
+  text-decoration: none;
+}
+
+.leaft-notes-link-move {
+  -moz-box-shadow:10px 10px 7px rgba(0,0,0,.7);
+  -webkit-box-shadow: 10px 10px 7px rgba(0,0,0,.7);
+  box-shadow:10px 10px 7px rgba(0,0,0,.7);
+  -webkit-transform: scale(1.25);
+  -moz-transform: scale(1.25);
+  -o-transform: scale(1.25);
+  position:relative;
+  z-index:5;
+  text-decoration: none;
+}
+
+
+.leaf-notes-text {
+  font-size:100%;
+  font-weight:normal;
+}
+
+.leaf-notes-header {
+  font-size:100%;
+  font-weight:bold;
+  padding-bottom:10px;
+}
+
+.leaf-notes-header:hover  {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.leaf-notes-prgm {
+  font-family:"Reenie Beanie",arial,sans-serif;
+  font-size:110%;
+}
+
+.rotate4deg {
+  -o-transform:rotate(4deg);
+  -webkit-transform:rotate(4deg);
+  -moz-transform:rotate(4deg);
+  position:relative;
+  top:5px;
+  background:#cfc;
+}
+
+.rotaten3deg {
+  -o-transform:rotate(-3deg);
+  -webkit-transform:rotate(-3deg);
+  -moz-transform:rotate(-3deg);
+  position:relative;
+  top:-5px;
+  background:#ccf;
+}
+
+#MainContentContainer{
+    background-color: #bcdff1;
+}

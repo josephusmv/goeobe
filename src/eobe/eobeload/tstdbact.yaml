@@ -1,0 +1,58 @@
+################ ## ##
+############### ######
+######## APPTASKS_TBL
+######  QueryAPPTASKS
+QueryActionName :	QueryAPPTASKS
+
+TableName       :	APPTASKS_TBL
+QueryType       :	SELECT
+WhereReadyStr   :	"id=? AND crtdt=?"
+
+ExpectedColNames:	["username", "title", "details", "crtdt"]
+
+################ ## ##
+############### ######
+######## APPTASKS_TBL
+######  QueryAPPTASKS
+#######################################################################################
+### ### ### ###### ######### ############ ############## ####### ######
+# APPTASKS_TBL
+### ### ### ###### ######### ############ ############## ####### ######
+#######################################################################################
+########  
+
+QueryActionName :	AddAppTaskEntry
+TableName       :	APPTASKS_TBL
+QueryType       :	INSERT
+
+WhereReadyStr   :	"id=? AND crtdt=?"
+ExpectedColNames:	["username", "title", "details", "crtdt"]
+
+
+########
+QueryActionName :	UpdatesAppTaskEntry
+TableName       :	APPTASKS_TBL
+QueryType       :	UPDATE
+WhereReadyStr   :	"crtdt=?"
+ExpectedColNames:	["title"]
+########
+QueryActionName :	DeletTestUser
+TableName       :	USER_TBL
+QueryType       :	DELETE
+WhereReadyStr   :	"username=?"
+########
+QueryActionName :	AddAppTaskEntry
+TableName       :	APPTASKS_TBL
+QueryType       :	INSERT
+
+WhereReadyStr   :	"id=? AND crtdt=?"
+ExpectedColNames:	["username", "title", "details", "crtdt"]
+
+
+########
+QueryActionName :	BadEntry
+TableName       :	USER_TBL
+QueryType       :	DELETE
+QueryType       :	DELETE
+WhereReadyStr   :	"username=?"
+QueryType       :	DELETE

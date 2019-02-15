@@ -1,0 +1,121 @@
+ACTION:
+
+TABLENAME:
+PARAMETER: [username___1, username___2, title, crtdt]   #tripple _ is a mark for multiple presents in the praramter list.
+CMPCONDITION: [eq, eq, like, neq]
+CONDOPERATOR: [OR, AND, AND]
+
+*** Important NOTES:
+*** The length of PARAMETER and CMPCONDITION MUST be equal, the length of CONDOPERATOR MUST be length of PARAMETER - 1
+*** This is logical and MANDATORY.
+
+QUERYTYPE: SELECT
+EXPECTEDFIELDS: [title, username, crtdt, details]
+EXPECTEDRESP: RESP_JSON
+
+Some new ideas:
+1. DB should support multiple queries in module define, but consider they are paralled. e.g.:
+    ************************************************************************************
+        ACTION: GetTASKByTitle
+        TABLENAME: [APPTASKS_TBL, USERDEFN_TBL]
+        PARAMETER: [
+            [username___1, username___2, title, crtdt] 
+            [username___1, username___2, title, crtdt]   #tripple _ is a mark for multiple presents in the praramter list.
+        ]
+        CMPCONDITION: [
+            [eq, eq, like, gt], 
+            [eq, eq, like, gt]
+        ]
+        LOGICOP: [
+            [OR, AND, AND],
+            [OR, AND, AND]
+        ]
+        QUERYTYPE: SELECT, SELECT
+        EXPECTEDFIELDS: [
+            [title, username, crtdt, details], 
+            [title, username, crtdt, details]
+        ]
+        EXPECTEDRESP: 
+            ExpectedFMT:  RESP_JSON
+    ************************************************************************************
+
+    2. DB can run a query based on another queries's result, this is a normal case.
+       But the input query must be SELECT only. This considered as an limitation of this version.
+       Even though, still have no good solution for this.
+
+
+    3. I think I should seriously consider another seperate qrydefn.yaml. But did not decide yet.
+
+    4. Consider Transaction API after Chinese new year
+
+    5. Consider DataValidation API during Chinese new year
+
+    6. IMPORTANT!!!! Forcus on Login and Cookie, then finish the facade.
+       And I should consider slow down, too tired, need rests.
+       Following this below:
+        12-13/Jan:  Finish basic works on Login and Cookie, tested. Start Login API.
+            - 1 - User management
+            - 2 - Login APIes            
+        19-20/Jan:  Finish Login API related issues
+        26-27/Jan:  Login API tested, Start Facade 
+        2-3/Feb:    Facade works, start eobe-cli
+        9-10/Feb:   Cli works, test on browser, start DataValidation API.
+        Then wait for Chinese New Year!!!
+
+
+API Desing:
+1. Example scenario: Add a new user by admin 
+    ActionName: AddNewUser
+    QueryParameter: [username, pwd, privilledge]
+    EXPECTEDRESP: 
+        ExpectedFMT:  RESP_HTML
+        HTMLFile: inDeX
+    APICalls: [
+        API_ValidateStr_REX
+        API_ValidateStr_REX
+        API_GetMyUserName, 
+        QueryMyPrivilledge, 
+        API_ValidateInt, 
+        AddNewUser, 
+        AddNewPrevil]
+    APIParams: [
+        QueryParameter.username&UNAMEREX
+        QueryParameter.pwd&UPWDREX
+        NA, 
+        NA, 
+        ge3, 
+        QueryParameter, 
+        QueryParameter]
+    file RegExpression.list 
+        UNAMEREX:^[a-zA-Z0-9_]{4,16}$
+        UPWDREX:^[a-zA-Z]{1}([a-zA-Z0-9]|[._]){8,16}$
+
+    --1--> API_GetMyUserName
+            Input N/A, Output: string, boolean(false if not loged in)
+    --2-->  QueryMyPrivilledge
+        input : boolean --- each DataAction by default has a boolean parameter, if it's not true, will be fatal error.)
+            ActionName: QueryMyPrivilledge
+            QueryType: SELECT
+            TableName: USER_PRIVLEGE_TBL
+            WhereReadyStr: username=?
+            ExpectedColNames: user_privledge        #int return
+    --3-->API_ValidateInt
+        Input([]string, string, int) - the first []string is from previous call, the other two is from string>=3.
+        (API_ValidateInt will try to convert first input []string into int, 
+         and verify every one of the slice is >=3, as parameter requested.)
+            return boolean as true or false
+    --4-->  AddNewUser
+        input : boolean --- each DataAction by default has a boolean parameter, if it's not true, will be fatal error.)
+            ActionName: AddNewUser
+            QueryType: INSERT
+            TableName: USER_TBL
+            ExpectedColNames: username, pwd, 
+    --4-->  AddNewPrevil
+        input : boolean --- each DataAction by default has a boolean parameter, if it's not true, will be fatal error.)
+            ActionName: AddNewPrevil
+            QueryType: INSERT
+            TableName: USER_PRIVLEGE_TBL
+            ExpectedColNames: username, privilledge
+
+
+2. Example scenario

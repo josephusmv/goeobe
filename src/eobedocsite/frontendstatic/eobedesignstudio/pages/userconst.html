@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Title....</title>
+    <!-- Font Awesome -->
+  <script defer src="../js/fontawesome-all.js"></script>
+    <!-- Bootstrap core CSS -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="../css/mdb.min.css" rel="stylesheet">
+    <!-- Your custom styles (optional) -->
+    <link href="../css/style.min.css" rel="stylesheet">
+    <!-- Custom styles for this template-->
+    <link href="../css/mainstyle.css" rel="stylesheet">
+</head>
+
+<body class="fixed-nav sticky-footer bg" id="page-top">
+    
+  <!-- Navigation-->
+  <nav class="navbar navbar-expand-lg navbar bg-light fixed-top" id="mainNav" style="padding-left: 25px">
+    <a class="navbar-brand" href="#">test</a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon">...</span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">          
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard" style="padding-top: 25px">
+          <a class="nav-link" href="./index.html">
+            <i class="fas fa-home mr-1"></i>
+            <span class="nav-link-text">test</span>
+          </a>
+        </li>        
+        
+        <!-- Side Navi item Configurations --> 
+        <li id="sideNavConfigItem" class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
+          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseConfigurations" data-parent="#exampleAccordion">
+            <i class="fas fa-cogs mr-1"></i>
+            <span class="nav-link-text">Configurations</span>
+          </a>
+          <ul class="sidenav-second-level collapse" id="collapseConfigurations">
+            <li>
+              <a href="ovrlcfg.html">General Config</a>
+            </li>
+            <li>
+              <a href="httpcfg.html">HTTP Config</a>
+            </li>
+          </ul>
+        </li>
+        
+        <!-- Side Navi item Module #1 --> 
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
+          <a class="nav-link nav-link-collapse collapsed collapseBtnItem" data-toggle="collapse" href="#collapseModuleXXX" data-parent="#exampleAccordion">
+            <i class="fa fa-fw fa-wrench mr-1"></i>
+            <span class="nav-link-text">*ModuleNames*</span>
+          </a>
+          <ul class="sidenav-second-level collapse collapseTargetItem" id="collapseModuleXXX">
+            <li>
+              <a href="httpactions.html">HTTPActions</a>
+            </li>
+            <li>
+              <a href="dbactions.html">DBActions</a>
+            </li>
+            <li>
+              <a href="userconst.html">User Constants</a>
+            </li>
+          </ul>
+        </li>
+        
+        
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Link">
+          <a class="nav-link" href="#">
+            <i class="fa fa-fw fa-link"></i>
+            <span class="nav-link-text">API List Document</span>
+          </a>
+        </li>
+      </ul>
+      <ul class="navbar-nav ml-auto">
+                  
+        
+          
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
+            <i class="fas fa-envelope-square"></i>
+            <i class="fab fa-github"></i>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <!-- Navigation-->
+  
+  
+  <!-- Main Content -->
+  <div class="content-wrapper">
+    <div class="container-fluid">
+            
+      <!-- one cards row: userConstants -->
+      <div class="row">
+          <div class="col-xl-12 col-sm-12 mb-3">
+            <!-- one card -->
+            <div class="card bg-light text-primary">
+                <div class="card-header">
+                  User Constant Values
+                </div>
+                  
+                  <!-- Module List Table -->
+                  <li class="list-group-item w-100" >
+                          <div class="table-responsive">
+                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                              <tbody id="tmpltFileTBody" >   
+                                  
+                                <tr id="trFileRow0"   style="border: 0 transparent">
+                                    <td  style="border: 0;">
+                                        <div class="row">
+                                            <div class="col-xl-3 col-sm-12 mb-3">                                      
+                                                <input id="moduleNameElem"
+                                                       type="text" class="form-control" 
+                                                       placeholder="constant name"
+                                                       aria-label="constant name"
+                                                       aria-describedby="basic-addon2" style="height: 2.5em">
+                                            </div>
+                                            <div class="col-xl-9 col-sm-12 mb-3">
+                                                <div class="input-group">
+                                                  <input type="text" class="form-control" 
+                                                         placeholder="constant value" 
+                                                         aria-label="constant value" 
+                                                         aria-describedby="basic-addon2" style="height: 2.5em">
+                                                  <div class="input-group-append">
+                                                    <a class="nav-link ml-2 mr-1" href="javascript:void(0);" onclick="addNewRows();" style="font-size: 2em; padding: 0">
+                                                        <i class="fas fa-plus-square"></i>
+                                                    </a>
+                                                     <a class="nav-link ml-1 mr-1 minus" href="javascript:void(0);" onclick="removeNewRows('trFileRow0');" style="font-size: 2em; padding: 0">
+                                                        <i class="fas fa-minus-square"></i>
+                                                     </a>
+                                                  </div>
+                                                </div><!--div class="input-group"-->
+                                            </div>
+                                        </div> <!-- div class="row" -->
+                                    </td>
+                                </tr> <!-- trFileRow0 -->
+
+                              </tbody>
+                            </table>
+                          </div>
+                  </li><!-- Module List Table -->
+                </ul>
+            </div> <!-- one card -->
+        </div> 
+      </div> <!-- one cards row: Modules -->
+      
+      
+      <!-- one cards row: Save button -->
+      <div class="row mb-5 ml-3 mr-3">
+        <a class="btn btn-primary w-100" href="javascript:void(0);" onclick="saveConstantsClicked()" id="toggleSaveCfg">Save User constants for this module</a>
+      </div> <!-- one cards row: Modules -->
+      
+    
+    <!-- /.content-wrapper-->
+    <footer class="sticky-footer">
+      <div class="container">
+        <div class="text-center">
+          <small>Copyright © Your Website 2018</small>
+        </div>
+      </div>
+    </footer>
+    
+    </div>  <!-- /.container-fluid-->
+  
+    <!-- error Modal-->
+    <div class="modal fade" id="errorDialogModal" tabindex="-1" role="dialog" aria-labelledby="errorDialogModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" id="errorDialogModalLabel"> Error </h4>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+            <div class="modal-body">
+                <span id="errorDialogModalErrorMsg"></span>
+            </div>
+          <div class="modal-footer">
+            <button class="btn btn-primary" type="button" data-dismiss="modal">dismiss</button>
+          </div>
+        </div>
+      </div>
+    </div><!-- error Modal-->
+    
+  </div>
+  <!-- Main Content -->
+    
+    <!-- Bootstrap core JavaScript-->
+    <script src="../js/jquery-3.2.1.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script defer src="../js/modulemgr.js"></script>
+    <!--   $(document).ready -->
+    <script>
+        $(document).ready(function(){
+            $('#collapseConfigurations').collapse('show');
+        });
+        
+        var lastIndex = 1;
+        function addNewRows(){
+            lastIndex++;
+            var newTr = $("#trFileRow0").clone();
+            var newTrID = "trFileRow" + lastIndex;
+            newTr.attr("id", newTrID);
+            var removeFunc = "removeNewRows('"+ newTrID + "');"
+            newTr.find(".minus").attr("onclick", removeFunc);
+            newTr.appendTo("#tmpltFileTBody");
+        }
+        
+        function removeNewRows(trId){
+            if(trId=="trFileRow0"){
+                var errMsgStr = "Cannot remove the first row."
+                $('#errorDialogModal').find("#errorDialogModalErrorMsg").html(errMsgStr);
+                $('#errorDialogModal').modal('toggle');
+                return;
+            }
+            $("#"+trId).remove();
+        }
+        
+        function saveModulesClicked(){
+        }
+    </script><!--   $(document).ready -->
+    
+   
+     
+  </body> <!--End of body -->
+
+</html>

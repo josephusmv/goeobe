@@ -1,0 +1,20 @@
+ServerName: "eobeserver"
+ServerVersion:  "0.1"
+
+## Page resources
+IndexActionName:  "GetIndex"
+Page404FilePath:  "page404.html"
+TemplateFileList: [
+  "./unittest/home/tmplt/addcookie.html",
+  "./unittest/home/tmplt/dYnAmic.tmplt",
+  "./unittest/home/tmplt/file.html",
+  "./unittest/home/tmplt/index.tmplt",
+  "./unittest/home/tmplt/page404.html",
+  "./unittest/home/tmplt/stAtic.html"]  
+
+## Response option headers
+AddXSSProtectionHeader: true
+AddXContentHeader:  true
+AddCharSetHeader: true
+ValHeaderCharSet: "utf-8"
+AddHSTSHeader:  true

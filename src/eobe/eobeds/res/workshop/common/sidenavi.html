@@ -1,0 +1,62 @@
+{{define "sidenavi"}}
+
+  <!-- Navigation-->
+  <nav class="navbar navbar-expand-lg navbar bg-light fixed-top" id="mainNav" style="padding-left: 25px">
+    <a class="navbar-brand" href="#">EOBE Workshop</a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon">...</span>
+    </button>
+    
+    <div class="collapse navbar-collapse sideNaviBar" id="navbarResponsive">
+      <!-- side bar -->
+      <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
+          
+        <!-- Side Navi item Start Page -->
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard" style="padding-top: 25px">
+          <a class="nav-link" href="IndexPage">
+            <i class="fas fa-home"></i>
+            <span class="nav-link-text">Start Page</span>
+          </a>
+        </li> <!-- Side Navi item Start Page -->
+        
+        
+        <!-- Side Navi item Configurations --> 
+        <li id="sideNavConfigItem" class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
+          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseConfigurations" data-parent="#exampleAccordion">
+            <i class="fas fa-cogs mr-1"></i>
+            <span class="nav-link-text">Configurations</span>
+          </a>
+          <ul class="sidenav-second-level collapse sideNaveCollapsible" id="collapseConfigurations">
+            <li>
+              <a href="OverallPage">General Config</a>
+            </li>
+            <li>
+              <a href="httpcfg">HTTP Config</a>
+            </li>
+          </ul>
+        </li> <!-- Side Navi item Configurations --> 
+
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Link">
+          <a class="nav-link" href="apilist">
+            <i class="fa fa-fw fa-link"></i>
+            <span class="nav-link-text">API List Document</span>
+          </a>
+        </li>
+      </ul> <!-- side bar -->
+        
+      <!-- navi header icons -->     
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a style="font-size: 1.4em; padding:0px">
+            <i class="fab fa-github mr-2"></i>
+          </a>
+          <a style="font-size: 1.4em; padding:0px" data-toggle="modal" data-target="#MailBoxInfoDialog">
+            <i class="fas fa-envelope-square"></i>                
+          </a>
+        </li>       
+      </ul>  <!-- navi header icons -->
+      
+    </div>
+  </nav>
+
+{{end}}

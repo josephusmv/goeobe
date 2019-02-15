@@ -1,0 +1,90 @@
+1. Test mgmt user as admin:
+    Requests:
+    1.1 
+    -POST-AJAX-> Login as admin
+        0). Query Values:
+            usr, pwd, expdays
+        1). API calls:
+            "RemoteEncrypt: 127.0.0.1,8081, enc, ?pwd"                          # Get password encrypted to DB storage value
+            "(SaveRslt)QueryUserTblForLogin: ?usr, ^encpwd"                     # Query User Table, get Username and permission which are expected results from DBAction QueryUserTbl.
+            "ValidateInt: ^retAffectedRows, gt, 0, $InvalidLogin"               # Confirm is correct login, give an specific error string if not.
+            "ValidateInt: ^permission, gt, $AdminPermission, $UserForbidden"    # Confirm user has Admin permission specified, give an specific error string if not.
+            "(SaveRslt)LogInUser: ?usr, ?expdays"
+        2). HTTP response:
+            AJAX: {user:ADMINNAME, permission: valid permission value.}
+        3). Front end expected processing:
+            enable administrator related operations(requests) depending on returned permission value.
+        4). Verify expected test result on feature testing stage:
+            verify the API result: <CallSeqResult.SingleRow>
+
+    1.2
+    -GET-HTML-> View all users
+        0). Query Values:
+            start_index, count
+        1). API calls:
+            "GetCurrentUser:"                                                   # Get current logined  user name
+            "QueryUserTbl: ^retCurrentUserName"                                 # Query User Table, get Username and permission which are expected results from DBAction QueryUserTbl.
+            "ValidateInt: ^permission, gt, $AdminPermission, $UserForbidden"    # Confirm user has Admin permission specified, give an specific error string if not.
+            "(SaveRows)GetMultiRows: QueryAllUserNames"
+            "(FilterRows)FilterMultiRows: ?start_index, ?count"                 # For multi-pages, page 1 100 items, page 2 100....
+        2). HTTP response:
+            HTML template values: [][]queried row results.
+        3). Front end expected processing:
+            Expecting a full HTML response, need verify the result contains the users count...
+            Draw the HTML got, no special operation required.
+        4). Verify expected test result on feature testing stage:
+            verify the API result: <CallSeqResult.MNames, CallSeqResult.MultiRow>
+
+    1.3
+    -GET-HTML/AJAX-> Check one user detail
+        0). Query Values:
+            username
+        1). API calls:
+            "GetCurrentUser:"                                                   # Get current logined  user name
+            "QueryUserTbl: ^retCurrentUserName"                                 # Query User Table, get Username and permission which are expected results from DBAction QueryUserTbl.
+            "ValidateInt: ^permission, gt, $AdminPermission, $UserForbidden"    # Confirm user has Admin permission specified, give an specific error string if not.
+            "(SaveRslt)QueryUserProfile: ?username"
+        2). HTTP response: ---> this action should be divided into two in real implementation.
+            One for PC, one for phone/tablet.
+            HTML template values: [][]queried row results
+                HTML for phone/tablet
+                JSON for PC -- modal window
+        3). Front end expected processing:
+                Phone/tablet:   Draw the HTML got, no special operation required.
+                PC: pormotes an Modal windows according to AJAX response, draws the modal window in front end.
+        4). Verify expected test result on feature testing stage:
+                For this test, verify only JSON(as for PC)
+                and don't need test HTML 
+                as obviously HTML template related test cases definitely must be covered by other tests.
+        
+    1.4
+    -POST-AJAX-> Add a new user(With promote in same request)
+        0). Query Values and API calls: See AddNewUserByAdmin
+        1). HTTP response:
+            JSON: New user profile for display.
+        2). Front end expected processing: Display the new user's profile.
+        3). Verify: New user profile
+
+    1.5
+    -POST-AJAX-> Modify user
+        0). Query Values and API calls: See ModifyUserByAdmin
+        1). HTTP response:
+            JSON: New user profile for display.
+        2). Front end expected processing: Display the new user's profile.
+        3). Verify: New user profile
+
+    1.6
+    --> Delete an existed user
+        0). Query Values and API calls: See DeleteUserByAdmin
+        1). HTTP response:
+            JSON: OK...row affected.
+        2). Front end expected processing: operation success notify.
+        3). Verify: Expect return 0 for query
+
+    1.7
+    --> Logout
+        0). Query Values and API calls: See LogoutUser
+        1). HTTP response:
+            JSON: OK...row affected.
+        2). Front end expected processing: operation success notify.
+        3). Verify: Expect return 0 for query

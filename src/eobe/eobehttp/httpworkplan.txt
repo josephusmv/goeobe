@@ -1,0 +1,34 @@
+1. Refactory interfaces.
+2. Add upload file
+3. Add cookie interfaces
+4. Change ctor
+5. rewrote all test cases.
+
+Basically a rewrite work.
+
+
+For the current version of HTTP, use a keyword to specify the file uploaded in PostForm!! ------ DONE
+
+
+
+
+(NOT taht important) ALL INTERMEDIATE SEND, NO MATTER ERROR or FILE or any THING, MUST BE Delayed!!!!!!!
+Now the first problem is, NO place to put below codes:
+	//mthInf.doMethod may terminates the request,
+	//set cookie now, will empty if latterly use  rs.respFetcher.FetchResponse.
+	for _, v := range r.Cookies() {
+		http.SetCookie(w, v)
+	}
+				==============>  IF only requesting a static/error page... and so on.
+Cookie is set with a response and no need to set replicate cookies.
+Only send cookie when a cookie need to be add, update, detele to the front end, to notify the front-end cookie change!
+
+!!this is important, need to get all cookie before running API, then after running API, compare and sent updated cookies.
+updated here means: 
+	1. Newly added cookie
+	2. Deleted cookie(Expire?)
+	3. extend expire cookie.
+Add a new helper function:
+func GetDifferntCookies(cMap1 map[string]*http.Cookie, cMap2 map[string]*http.Cookie) []*http.Cookie 
+to the eobeclemgmt to get differnt cookies....it will take responsbility of above cookie related,
+To calculate a list ready for send.

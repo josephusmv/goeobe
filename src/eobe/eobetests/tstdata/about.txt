@@ -1,0 +1,21 @@
+package eobetests is about testing the coordinates of 
+    eobe API, DB, cltmgmt, load
+This package will not includes HTTP and parser and other tests.
+But the output(verify data) will be reused as HTTP and parser module tests.
+
+This package tests those four modules through some simulated feature actions defined in XxxXtst/testplan.txt
+
+All test commands:
+1. go test -v -run AsAdminUserMgmt 
+    Simulate an administrator action
+2. go test -v -run UserActions
+    Simultaneously run 6 users with go routine, to simulate real HTTP concurrency
+3. go test -v -run UserExpires
+    Test User login and expire events, without DB testing due to DB expire issue on some machine.
+4. go test -v -run FileUpload
+    Test File Upload and save API, DB storage for FILE path involved.
+
+
+
+
+

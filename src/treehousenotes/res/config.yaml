@@ -1,0 +1,25 @@
+
+# Common
+RootFolder: "./res"
+
+# DB INFO
+DBName: mysql
+DBConnStr: root:3edc$RFV@/THDATABASE
+
+# DEV Debug info
+EnableDEVLog: true
+LOGFolder: "./ALLLOGS"
+
+# HTTP defines
+HTTPPort: 8080
+HTTPSPort: 4030
+HasHTTP: TRUE
+NoHTTPS: FALSE
+CertFilePath: "./res/sslkeys/cert.pem"
+KeyFilePath: "./res/sslkeys/key.pem"
+HTTPPkgCfgFile:  "./res/httpcfg.yaml"
+
+# Module defines
+RootModule: "leafnotes"
+Modules: [leafnotes]
+IndexActionNames:  ["StartPage"]

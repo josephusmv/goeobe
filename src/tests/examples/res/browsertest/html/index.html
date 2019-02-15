@@ -1,0 +1,72 @@
+<html>    
+    {{template "headerTest"}}
+    <body> 
+        <h1>
+            Browser Test HomePage Index.html --- updated
+        </h1>
+        <h2>
+        This is for purspose of testing full eobe application with browser involved.
+        </h2>
+        Results :
+        <p id="resultarea">
+        </p>
+        </br></br>
+    
+        <div>
+        <p>
+            Test page links:
+        </p>
+        <form action="AddUser">
+          Name:<br>
+          <input type="text" name="user" value="Mickey">
+          <br>
+          Password:<br>
+          <input type="password" name="pwd" value="Mickey">
+          <br>
+          Permission:<br>
+          <input type="number" name="permission" value="999">
+          <br>
+          expire days<br>
+          <input type="number" name="expdays" value="7">
+          <br><br>
+          <input type="submit" value="Submit">
+        </form> 
+        
+        <button onclick="loginuer()"> Login </button>
+        </br></br>
+        <button onclick="Logout()"> Logout </button>
+        </br></br>
+        <button onclick="showuser()"> showuser </button>
+        </br></br>
+        <button onclick="deleteuser()"> deleteuser </button>
+        </br></br>
+                
+        <ul>
+            <li> ShowAllRows
+                <form action="ShowAllRows">
+                  username:<br>
+                  <input type="text" name="username" value="sadmin">
+                  <input type="submit" value="Submit">
+                </form> 
+            </li>
+            <li>ShowRowsWithIndex
+                <form action="ShowRowsWithIndex">
+                  username:<br>
+                  <input type="text" name="username" value="sadmin">
+                  start<br><input type="number" name="sidx" value="0">
+                  count<br><input type="number" name="count" value="10">
+                  <input type="submit" value="Submit">
+                </form> 
+            </li>
+            <li>ShowRowsOfRange
+                <form action="ShowRowsOfRange">
+                  srchkey<br>
+                  <input type="text" name="srchkey" value="2014">
+                  <input type="submit" value="Submit">
+                </form>
+            </li>
+        </ul>
+    </br>
+    
+    </body>
+</html>

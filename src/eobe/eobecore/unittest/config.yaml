@@ -1,0 +1,10 @@
+#Mandatory
+DBName: mysql
+DBConnStr: root:123456@/THDATABASE
+Modules: [HOME]
+RootFolder: "./unittest/"
+HTTPPkgCfgFile:  "./unittest/httpcfg.yaml"
+#Optional
+HTTPPort: 8080
+EnableDEVLog: true
+LOGFolder: "./testlogs"

@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>eobe design studio</title>
+    <!-- Font Awesome -->
+  <script defer src="../js/fontawesome-all.js"></script>
+    <!-- Bootstrap core CSS -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="../css/mdb.min.css" rel="stylesheet">
+    <!-- Your custom styles (optional) -->
+    <link href="../css/style.min.css" rel="stylesheet">
+    <!-- Custom styles for this template-->
+    <link href="../css/mainstyle.css" rel="stylesheet">
+</head>
+
+<body class="fixed-nav sticky-footer bg" id="page-top">
+  <!-- Navigation-->
+  <nav class="navbar navbar-expand-lg navbar bg-light fixed-top" id="mainNav" style="padding-left: 25px">
+    <a class="navbar-brand" href="#">EOBE Design Studio</a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon">...</span>
+    </button>
+    
+    <div class="collapse navbar-collapse sideNaviBar" id="navbarResponsive">
+      
+      <!-- side bar -->
+      <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">          
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard" style="padding-top: 25px">
+          <a class="nav-link" href="index.html">
+            <i class="fas fa-home"></i>
+            <span class="nav-link-text">Eobe</span>
+          </a>
+        </li>        
+        
+        
+        <!-- Side Navi item Configurations --> 
+        <li id="sideNavConfigItem" class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
+          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseConfigurations" data-parent="#exampleAccordion">
+            <i class="fas fa-cogs mr-1"></i>
+            <span class="nav-link-text">Configurations</span>
+          </a>
+          <ul class="sidenav-second-level collapse sideNaveCollapsible" id="collapseConfigurations">
+            <li>
+              <a href="ovrlcfg.html">General Config</a>
+            </li>
+            <li>
+              <a href="httpcfg.html">HTTP Config</a>
+            </li>
+          </ul>
+        </li>
+        
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
+          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
+             <i class="fas fa-caret-down"></i>
+            <span class="nav-link-text moduleTitleItem">*ModuleNames*</span>
+          </a>
+          <ul class="sidenav-second-level collapse sideNaveCollapsible" id="collapseComponents">
+            <li>
+              <a href="httpactions.html">HTTPActions</a>
+            </li>
+            <li>
+              <a href="dbactions.html">DBActions</a>
+            </li>
+            <li>
+              <a href="userconst.html">User Constants</a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Link">
+          <a class="nav-link" href="#">
+            <i class="fa fa-fw fa-link"></i>
+            <span class="nav-link-text">API List Document</span>
+          </a>
+        </li>
+      </ul> <!-- side bar -->
+        
+      <!-- Collaps for small screen -->
+      <ul class="navbar-nav sidenav-toggler">
+        <li class="nav-item">
+          <a class="nav-link text-center" id="sidenavToggler">
+            <i class="fa fa-fw fa-angle-left"></i>
+          </a>
+        </li>
+      </ul><!-- Collaps for small screen -->
+        
+      <!-- navi header icons -->
+      <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+          <a class="nav-link" data-toggle="modal" style="font-size: 1.4em; padding:0px">
+            <i class="fas fa-envelope-square mr-2"  data-target="#MailBoxInfoDialog"></i>
+            <i class="fab fa-github"></i>
+          </a>
+        </li>
+      </ul> <!-- navi header icons -->
+      
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+<div class="content-wrapper">
+    <div class="container-fluid"> 
+      <a class="btn btn-primary" data-toggle="modal" data-target="#centralModalFluidSuccessDemo">Test Modal button #1</a>
+      <a class="btn btn-primary" href="javascript:void(0);" onclick="updateModuleSideNavBar()" id="toggleLoadProject" style="width:20em">Test Modal button #2</a>
+      <a class="btn btn-primary" href="javascript:void(0);" id="toggleLoadSample" style="width:20em">Test Modal button #3</a>
+     </div>
+
+    <!-- DataTables Card-->
+    <div class="card mb-3">
+        <div class="card-header">
+          <i class="fa fa-table"></i> Template Files
+        </div>
+
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+
+              <tbody id="tmpltFileListTble" >          
+                <tr id="filerow1"   style="border: 0 transparent">
+                    <td  style="border: 0 ">
+                    <div class="input-group">
+                      <input type="text" class="form-control" 
+                             placeholder="Template file full path" 
+                             aria-label="Template file full path" 
+                             aria-describedby="basic-addon2" style="height: 2.5em">
+                      <div class="input-group-append">
+                        <a class="nav-link ml-2 mr-1" href="javascript:void(0);" onclick="addnewRows();" style="font-size: 2em; padding: 0">
+                            <i class="fas fa-plus-square"></i>
+                        </a>
+                         <a class="nav-link ml-1 mr-1" href="#" style="font-size: 2em; padding: 0">
+                            <i class="fas fa-minus-square"></i>
+                         </a>
+                      </div>
+                    </div>
+                    </td>
+                </tr>
+
+                <tr id="filerow2"   style="border: 0 transparent">
+                    <td   style="border: 0 transparent">
+                    <div class="input-group">
+                      <input type="text" class="form-control" 
+                             placeholder="Template file full path" 
+                             aria-label="Template file full path" 
+                             aria-describedby="basic-addon2" style="height: 2.5em">
+                      <div class="input-group-append">
+                        <a class="nav-link ml-2 mr-1" href="#" style="font-size: 2em; padding: 0">
+                            <i class="fas fa-plus-square"></i>
+                        </a>
+                         <a class="nav-link ml-1 mr-1" href="#" style="font-size: 2em; padding: 0">
+                            <i class="fas fa-minus-square"></i>
+                         </a>
+                      </div>
+                    </div>
+                    </td>
+                </tr>
+
+
+                <tr id="filerow3"   style="border: 0 transparent">
+                    <td   style="border: 0 transparent">
+                    <div class="input-group">
+                      <input type="text" class="form-control" 
+                             placeholder="Template file full path" 
+                             aria-label="Template file full path" 
+                             aria-describedby="basic-addon2" style="height: 2.5em">
+                      <div class="input-group-append">
+                        <a class="nav-link ml-2 mr-1" href="#" style="font-size: 2em; padding: 0">
+                            <i class="fas fa-plus-square"></i>
+                        </a>
+                         <a class="nav-link ml-1 mr-1" href="#" style="font-size: 2em; padding: 0">
+                            <i class="fas fa-minus-square"></i>
+                         </a>
+                      </div>
+                    </div>
+                    </td>
+                </tr>                
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="card-footer small text-muted">Updated yesterday at 11:59 PM
+        </div>
+
+    </div><!-- DataTables Card-->
+    <!-- /.container-fluid-->
+    
+    
+    <!-- About Modal-->
+    <div class="modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" id="exampleModalLabel"> Author: Josephus </h4>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <ul>
+                <li>Mail: jomu_7@goeobe.com</li>
+                <li>Copyright © Jomu_7@goeobe.com 2018</li>
+            </ul>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-secondary" type="button" data-dismiss="modal">Got it!</button>
+          </div>
+        </div>
+      </div>
+    </div><!-- About Modal-->
+    
+
+    <!-- Central Modal Fluid Success-->
+    <div class="modal fade" id="centralModalFluidSuccessDemo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-fluid modal-notify modal-success" role="document">
+            <!--Content-->
+            <div class="modal-content">
+                <!--Header-->
+                <div class="modal-header">
+                    <p class="heading lead">Add </p>
+
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true" class="white-text">&times;</span>
+                    </button>
+                </div>
+
+                <!--Body-->
+                <div class="modal-body">
+                    <div class="text-center">
+                        <i class="fa fa-check fa-4x mb-3 animated rotateIn"></i>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit iusto nulla
+                            aperiam blanditiis ad consequatur in dolores culpa, dignissimos, eius
+                            non possimus fugiat. Esse ratione fuga, enim, ab officiis totam.
+                        </p>
+                    </div>
+                    <ul class="list-group z-depth-0">
+                        <li class="list-group-item justify-content-between">
+                            Cras justo odio
+                            <span class="badge badge-primary badge-pill">14</span>
+                        </li>
+                        <li class="list-group-item justify-content-between">
+                            Dapibus ac facilisis in
+                            <span class="badge badge-primary badge-pill">2</span>
+                        </li>
+                        <li class="list-group-item justify-content-between">
+                            Morbi leo risus
+                            <span class="badge badge-primary badge-pill">1</span>
+                        </li>
+                        <li class="list-group-item justify-content-between">
+                            Cras justo odio
+                            <span class="badge badge-primary badge-pill">14</span>
+                        </li>
+                        <li class="list-group-item justify-content-between">
+                            Dapibus ac facilisis in
+                            <span class="badge badge-primary badge-pill">2</span>
+                        </li>
+                        <li class="list-group-item justify-content-between">
+                            Morbi leo risus
+                            <span class="badge badge-primary badge-pill">1</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!--Footer-->
+                <div class="modal-footer">
+                    <a role="button" class="btn btn-success">Get it now
+                        <i class="fa fa-diamond ml-1"></i>
+                    </a>
+                    <a role="button" class="btn btn-outline-success waves-effect" data-dismiss="modal">No, thanks</a>
+                </div>
+            </div>
+            <!--/.Content-->
+        </div>
+    </div>
+    <!-- Central Modal Fluid Success-->  
+
+        <div class="alert alert-success" id="testAlert">
+           <button type="button" class="close" data-dismiss="alert">x</button>
+           <strong>Success! </strong>
+           Product have added to your wishlist.
+       </div>
+  </div>  <!-- Main Content -->
+    
+    <!-- Bootstrap core JavaScript-->
+    <script src="../js/jquery-3.2.1.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script defer src="../js/modulemgr.js"></script>
+    
+    <!--   $(document).ready -->
+    <script>
+        $(document).ready(function(){
+            $('#collapseConfigurations').collapse('hide');
+            
+            $(".sideNaveCollapsible").on('show.bs.collapse', function () {
+                    $(".sideNaviBar").find(".sideNaveCollapsible").collapse('hide');
+            });
+            
+            $("#testAlert").hide();
+            $("#toggleLoadSample").click(function showAlert() {
+               $("#testAlert").fadeTo(2000, 500).slideUp(500, function(){
+                    $("#testAlert").slideUp(500);
+               });
+            });
+        });
+        
+        function addnewRows(){
+            $("#filerow1").clone().appendTo("#tmpltFileListTble");
+        }
+                
+    </script><!--   $(document).ready -->
+    
+    <!--End of body -->
+</body>
+
+</html>

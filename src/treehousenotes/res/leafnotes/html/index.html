@@ -1,0 +1,75 @@
+<html>
+<head>
+        <title>Leaf Notes</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        {{template "commonheader"}}
+        <link  href="http://fonts.googleapis.com/css?family=Reenie+Beanie:regular" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="leafnotes/css/filter.css">
+        <link rel="stylesheet" href="../leafnotes/css/notes.css">
+        <script src="leafnotes/js/filter.js"></script>
+        <script src="../leafnotes/js/notes.js"></script>  
+        <script src="../leafnotes/js/index.js"></script>  
+</head>
+    
+<body onload="onLoadScripts()">
+    <header style="padding-bottom: 0px;">
+    {{template "navibar"}}
+    </header>
+    
+        <div class="container-fluid">
+            <div class="row d-flex d-md-block flex-nowrap wrapper">
+              <nav class="col-md-3 float-left col-1 pl-0 pr-0 collapse width show" id="sidebar" style="max-width: 260px; min-height: 768px; height: 100%">
+                        <div class="left-nav-bar justify-content-center h-100" style="height: 100%">
+                            <button id="closeSideBar" type="button" class="close" data-toggle="collapse" data-target="#sidebar" aria-hidden="true" aria-expanded="false" aria-controls="sidebar">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <br><br>
+                            <input type="search" class="form-control mr-sm-2 left-nav-item" 
+                            id="itemSearch" placeholder="Search for notes.." aria-label="Search">
+                            </input>
+                            
+                            <ul id="filterlists" class="left-nav-item list-group">
+                                <li id="filterByDTTM" class="list-group-item"> 
+                                    <span style="Margin-bottom:0.5em;">Created Date:</span><br>
+                                </li>
+                                <br>
+                                <li id="filterByPriority" class="list-group-item">
+                                    <span style="Margin-bottom:0.5em;">Priority:</span><br>
+                                </li>
+                                <br>
+                                <li id="filterByUrgency" class="list-group-item">
+                                    <span style="Margin-bottom:0.5em;">Urgency:</span><br>
+                                </li>
+                            </ul>
+                            <br>
+                        </div>
+              </nav>
+                
+            <main id="MainContentContainer" class="col-md-9 float-left col px-5 pl-md-2 pt-2 main">
+                <div class="frameDIV leaf-notes-ul">        
+                    <div class="trigger-btn">
+                        <a id="clpsTrigger" type="link" data-toggle="collapse" data-target="#sidebar" aria-hidden="true" aria-expanded="false" aria-controls="sidebar">
+                              <br>
+                              <img id="closeImg" class="closeimage" src='../common/img/clover_sm_filter.png'></i>
+                              <br>
+                        </a>
+                    </div>
+                    <div class="leaf-note">
+                                <a href="#" class="leaft-notes-link box-shadow rotaten3deg">
+                                    <h2 class="leaf-notes-header">Title #1</h2>
+                                    <p class="leaf-notes-prgm">Text Content #1</p>
+                                </a>
+                    </div>
+
+                    <div class="leaf-note">
+                              <a href="#"  class="leaft-notes-link box-shadow rotate4deg">
+                                <h2 class="leaf-notes-header">Title #2</h2>
+                                <p class="leaf-notes-prgm">Text Content #2</p>
+                              </a>
+                    </div>
+                </div> <!-- frameDIV -->
+              </main>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,4 @@
+BUG LIST:
+1. Root folder setting:
+	From config.yaml, RootFolder should cover anything there including TemplateFileList and LOGFolder.
+	They all should be an relative path under RootFolder.

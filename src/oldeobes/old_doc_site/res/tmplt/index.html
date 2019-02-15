@@ -1,0 +1,121 @@
+<html>
+    <head>
+        <script src="js/jquery-3.2.1.min.js"></script>
+        <title> Test Index.html From res</title>
+    </head>
+    <body> 
+    <h1>
+    Simple Index
+    </h1>
+    <h2>
+    This is for purspose for testing and showing how to write template codes.
+    </h2>
+    <div>
+    <p> Indexing the KVMap by key "permission" </p>
+        <li><strong>permission</strong>: {{index .KVMap "permission"}}</li>
+    </div>
+
+
+    <div>
+    <p> Range the KVMap </p>
+    {{ range $key, $value := .KVMap }}
+        <li><strong>{{ $key }}</strong>: {{ $value }}</li>
+    {{ end }}
+    </div>
+    <div>
+    <p> Range the Rows </p>
+	{{ range $key, $value := .Rows }}
+        <li><strong>{{ $key }}:</strong>
+            {{ range $k, $v := $value  }}
+            <li><strong>{{ $k }}:</strong> {{ $v }}</li>
+            {{ end }}
+            {{index $value 1}}
+        </li>
+    {{ end }}
+    </div>
+</br>
+<a href="actionmaker">actionmaker</a>.
+    </br>
+    <a href="html/file.html">Test File Upload...</a>.
+    </br>
+    <a href="html/addcookie.html">Test add cookie...</a>.
+    </br>
+
+    <a href="FetchAPIList?sidx=0&count=100">ViewAllAPI...</a>.
+    </br>
+
+    <div>
+        <input type="text" placeholder="Inputs pwd here">
+        <button type="button" onclick="LoginAdmin()">login admin</button>
+        <br/>
+        <br/>
+        <button type="button" onclick="LoginMike()">login Mike</button>
+        <br/>
+        <br/>
+        <button type="button" onclick="Logout()">Log out</button>
+        <br/>
+        <br/>
+        <script>
+            function LoginAdmin(){  
+                var xhr = new XMLHttpRequest();
+                var formData = new FormData();
+                formData.append('username', "sadmin")
+                formData.append("password", "superadmin");
+                formData.append("expdays", "7");
+                xhr.open('POST', "LoginUser", true);
+                xhr.onreadystatechange = function () {
+                    if(xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+                        alert(xhr.responseText);
+                    }
+                };
+                xhr.send(formData);
+            }
+
+            function LoginMike(){  
+                var xhr = new XMLHttpRequest();
+                var formData = new FormData();
+                formData.append('username', "Mike")
+                formData.append("password", "mike");
+                formData.append("expdays", "7");
+                xhr.open('POST', "LoginUser", true);
+                xhr.onreadystatechange = function () {
+                    if(xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+                        alert(xhr.responseText);
+                    }
+                };
+                xhr.send(formData);
+            }
+
+            function Logout(){  
+                var xhr = new XMLHttpRequest();
+                var formData = new FormData();
+                xhr.open('POST', "LogoutUser", true);
+                xhr.onreadystatechange = function () {
+                    if(xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+                        alert(xhr.responseText);
+                    }
+                };
+                xhr.send(formData);
+            }
+            
+            
+            
+
+            /*
+            function ViewAllAPI(){  
+                var xhr = new XMLHttpRequest();
+                var formData = new FormData();
+                formData.append('sidx', "0")
+                formData.append("count", "100");
+                xhr.open('POST', "api/FetchAPIList", true);
+                xhr.onreadystatechange = function () {
+                    if(xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+                        $("html").html(xhr.responseText);
+                    }
+                };
+                xhr.send(formData);
+            }*/
+        </script>
+    </div>
+    </body>
+</html>

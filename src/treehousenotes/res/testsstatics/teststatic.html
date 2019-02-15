@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang='en' class=''>
+    <head>
+       <meta charset='UTF-8'>
+        <link rel="stylesheet" href="../common/css/bootstrap.min.css">
+        <link rel='stylesheet' href='./test.css'>
+    </head>
+    
+    <body><div class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Brand</a>
+    </div>
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</div>
+
+<div class="container-fluid">
+  <div class="row row-offcanvas">
+    
+    <div class="sidebar-offcanvas sidebar">
+      
+      <div class="panel panel-default">
+        <div class="panel-heading">Widget</div>
+        <div class="panel-body">
+          <p><a href="#"><i class="glyphicon glyphicon-check"></i> Action item</a></p>
+          <p><a href="#"><i class="glyphicon glyphicon-unchecked"></i> Action item</a></p>
+          <p class=""><a href="#"><i class="glyphicon glyphicon-plus"></i> Action item</a></p>
+          <p class=""><a href="#"><i class="glyphicon glyphicon-minus"></i> Action item</a></p>
+          <p><a href="#"><i class="glyphicon glyphicon-plus"></i> Action item</a></p>
+          <p><a href="#"><i class="glyphicon glyphicon-list"></i> Action item</a></p>
+        </div>
+      </div><!--/.panel-->
+      <div class="panel panel-default">
+        <div class="panel-heading">Widget</div>
+        <div class="panel-body">
+          <p><a href="#"><i class="glyphicon glyphicon-check"></i> Action item</a></p>
+          <p><a href="#"><i class="glyphicon glyphicon-unchecked"></i> Action item</a></p>
+          <p class=""><a href="#"><i class="glyphicon glyphicon-plus"></i> Action item</a></p>
+          <p class=""><a href="#"><i class="glyphicon glyphicon-minus"></i> Action item</a></p>
+          <p><a href="#"><i class="glyphicon glyphicon-plus"></i> Action item</a></p>
+          <p><a href="#"><i class="glyphicon glyphicon-list"></i> Action item</a></p>
+        </div>
+      </div><!--/.panel-->    
+    </div><!-- /.cols-->
+    
+    <div class="content">
+      <p class="pull-right">
+        <a type="button" class="btn btn-collapse btn-sm" data-toggle="offcanvas"><i class="glyphicon glyphicon-chevron-down"></i> Sidebar</a>
+      </p>
+  
+      <div class="text-center">
+        <h1>Bootstrap collapsible sidebar</h1>
+        <p class="lead">Example of a page with collapsible sidebar which is hidding by default on mobile screen. 
+        </p>
+        <p>Original code: <a href="http://www.bootply.com/113767" target="_blank">http://www.bootply.com/113767#</a></p>
+      </div> 
+      <div class="row">
+        <div class="col-md-3">
+          <div class="thumbnail">
+            <div class="caption">
+              <h3>Thumbnail label</h3>
+              <p>blah blah</p>
+              <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+            </div>
+          </div><!--/.thumbnail-->
+        </div><!--/.col-3-->
+                <div class="col-md-3">
+          <div class="thumbnail">
+            <div class="caption">
+              <h3>Thumbnail label</h3>
+              <p>blah blah</p>
+              <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+            </div>
+          </div><!--/.thumbnail-->
+        </div><!--/.col-3-->
+                <div class="col-md-3">
+          <div class="thumbnail">
+            <div class="caption">
+              <h3>Thumbnail label</h3>
+              <p>blah blah</p>
+              <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+            </div>
+          </div><!--/.thumbnail-->
+        </div><!--/.col-3-->
+                <div class="col-md-3">
+          <div class="thumbnail">
+            <div class="caption">
+              <h3>Thumbnail label</h3>
+              <p>blah blah</p>
+              <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+            </div>
+          </div><!--/.thumbnail-->
+        </div><!--/.col-3-->
+        
+      </div><!--/.row-->
+    </div><!-- /.cols-->
+  </div><!-- /.row-->
+</div><!-- /.container -->
+                        
+            
+            <script src='../common/js/jquery-3.2.1.min.js'></script>
+            <script src='../common/js/bootstrap.min.js'></script>
+            <script>
+                $(document).ready(function() {
+                    $('[data-toggle=offcanvas]').click(function() {
+                        $('.row-offcanvas').toggleClass('active');
+                    });
+                });
+                //# sourceURL=pen.js
+            </script>
+    </body>
+</html>

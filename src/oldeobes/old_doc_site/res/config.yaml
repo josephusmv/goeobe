@@ -1,0 +1,24 @@
+
+# Common
+RootFolder: "./res"
+
+# DB INFO
+DBName: mysql
+DBConnStr: root:123456@/THDATABASE
+
+# DEV Debug info
+EnableDEVLog: true
+LOGFolder: "./ALLLOGS"
+
+# HTTP defines
+HTTPPort: 8080
+HTTPSPort: 4030
+NoHTTPS:  false
+CertFilePath: "./res/sslkeys/cert.pem"
+KeyFilePath: "./res/sslkeys/key.pem"
+HTTPPkgCfgFile:  "./res/httpcfg.yaml"
+
+# Module defines
+RootModule: "api"
+Modules: [api, actionmaker]
+IndexActionNames:  ["StartPage", "MakerIndex"]

@@ -1,0 +1,37 @@
+<html>
+    <head>
+        <title> Test Index.html </title>
+    </head>
+    <body> 
+    <h1>
+    This is for purspose for testing and showing how to write template codes.
+    </h1>
+    <div>
+    <p> Indexing the KVMap by key "permission" </p>
+        <li><strong>permission</strong>: {{index .KVMap "permission"}}</li>
+    </div>
+    <div>
+    <p> Range the KVMap </p>
+    {{ range $key, $value := .KVMap }}
+        <li><strong>{{ $key }}</strong>: {{ $value }}</li>
+    {{ end }}
+    </div>
+    <div>
+    <p> Range the Rows </p>
+	{{ range $key, $value := .Rows }}
+        <li><strong>{{ $key }}:</strong>
+            {{ range $k, $v := $value  }}
+            <li><strong>{{ $k }}:</strong> {{ $v }}</li>
+            {{ end }}
+            {{index $value 1}}
+        </li>
+    {{ end }}
+    </div>
+
+</br>
+    <a href="sample/file.html">Test File Upload...</a>.
+</br>
+    <a href="sample/addcookie.html">Test add cookie...</a>.
+</br>
+    </body>
+</html>

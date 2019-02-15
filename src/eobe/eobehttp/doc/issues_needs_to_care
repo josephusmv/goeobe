@@ -1,0 +1,9 @@
+1. cahce issue
+2. The HTTPS(HSTS) is by default....
+3. Need Etag, last-modified...
+4. URL rule:
+    --> 1, root path, directly redirect to module_path/index
+    --> 2, any folder, directly redirect to module_path/index
+    --> 3, existed file, send.
+    --> 4, other case, send to respfetcher to handle.
+5. 404 page file name hard coded.

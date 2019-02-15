@@ -1,0 +1,14 @@
+NAMEREXBAD     :  "^[0-9_]{4,16}$"
+NAMEREX        :  "^[a-zA-Z0-9_]{4,16}$"
+CONSTID        :  "200"
+CONSTCRTDT     :  "2017-12-02 04:03:44"
+NOSUCHUSER     :  "User not exist in DB, please regester."
+USERFORBIDDEN  :  "User have not enough pervillidge to do this action."
+# this is a comments
+DEFAULT        :  "DEFAULT"
+TOPPERMS       :  "32768"
+INITPERMID     :  "10000"
+INTS
+INITPERM       :  "10000"
+TOPPERMS       :  "65535"
+FORMATEINVALID :  "User Name format invalid."

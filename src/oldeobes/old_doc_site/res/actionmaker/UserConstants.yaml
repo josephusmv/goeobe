@@ -1,0 +1,8 @@
+ENCSERVERIP: "127.0.0.1"
+ENCSERVERPORT: "9020"
+ADMINPERMISSION: "0XFFFF"
+EDITORPERMISSION: "0XABCD"
+ValueZero:  "0"
+UserForbidden: "User has no permission to do that."
+InvalidLogin: "No login user."
+LOCALPATH: "./res/uploaded"

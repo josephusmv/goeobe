@@ -1,0 +1,84 @@
+
+
+ActionName: AddUser
+QueryParameters: ["user", "pwd", "permission", "expdays"]
+ExpectedResponse: 
+    ExpectedFMT:  RESP_HTML
+    HTMLFile:   index.html
+APICalls: [
+    "GetUserName: ?user",
+    "ValidateInt: ^retAffectedRows, eq, $ValueZero, $EXISTEDUSER",     #user name should not be existed.
+    "RemoteEncrypt: 127.0.0.1,8081, enc, ?pwd",
+    "AddUser: ?user, ^encpwd, ?permission",
+    "ValidateInt: ^retAffectedRows, neq, $ValueZero, $InvalidLogin",
+    "(SaveRslt)LogInUser: ?user, ?expdays"]
+########
+
+ActionName: LoginUser
+QueryParameters: ["user", "pwd", "expdays"]
+ExpectedResponse: 
+    ExpectedFMT:  RESP_JSON
+APICalls: [   
+    "RemoteEncrypt: 127.0.0.1,8081, enc, ?pwd",
+    "GetUser: ?user, ^encpwd",
+    "ValidateInt: ^retAffectedRows, gt, $ValueZero, $InvalidLogin",     #if a valid error message is required, then must do this!
+    "ValidateInt: ^permission, eq, $Value999, $InvalidLogin",
+    "(SaveRslt)LogInUser: ?user, ?expdays"]
+########
+
+ActionName: LogOutUser
+QueryParameters: []
+ExpectedResponse: 
+    ExpectedFMT:  RESP_JSON
+APICalls: [   
+    "(SaveRslt)LogOutUser:"]
+########
+
+
+ActionName: DeleteUser
+QueryParameters: []
+ExpectedResponse: 
+    ExpectedFMT:  RESP_JSON
+APICalls: [   
+    "GetCurrentUser: ",
+    "DeleteUser: ^retCurrentUserName",
+    "(SaveRslt)LogOutUser:"]
+########
+
+ActionName: GetCurrentUser
+QueryParameters: []
+ExpectedResponse: 
+    ExpectedFMT:  RESP_JSON
+APICalls: [
+    "(SaveRslt)GetCurrentUser: "]
+########
+
+ActionName: ShowAllRows
+QueryParameters: ["username"]
+ExpectedResponse: 
+    ExpectedFMT:  RESP_HTML
+    HTMLFile:   ShowAllRows.html
+APICalls: [
+    "(SaveAll)GetTestTbl: ?username"]
+########
+
+
+ActionName: ShowRowsWithIndex
+QueryParameters: ["username", "sidx", "count"]
+ExpectedResponse: 
+    ExpectedFMT:  RESP_HTML
+    HTMLFile:   ShowRowsWithIndex.html
+APICalls: [
+    "GetTestTbl: ?username",
+    "(SaveAll)FilterMultiRows: ?sidx, ?count"]
+########
+
+ActionName: ShowRowsOfRange
+QueryParameters: ["srchkey"]
+ExpectedResponse: 
+    ExpectedFMT:  RESP_HTML
+    HTMLFile:   ShowRowsOfRange.html
+APICalls: [
+    "GetRangeTbl: ?srchkey",
+    "(SaveAll)RangeGetRows: GetTestTblByRange$$ ^testfield1"]
+########

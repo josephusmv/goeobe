@@ -1,0 +1,19 @@
+ServerName: "eobeserver"
+ServerVersion:  "0.1"
+
+## Page resources
+Page404FilePath:  "./res/common/html/page404.html"
+TemplateFileList: [
+  "./res/common/html/commonheader.html",
+  "./res/common/html/navbar.html",
+  "./res/leafnotes/html/index.html",
+  "./res/leafnotes/html/loginpage.html"]
+  
+PreloadStaticFiles: false
+
+## Response option headers
+AddXSSProtectionHeader: true
+AddXContentHeader:  true
+AddCharSetHeader: true
+ValHeaderCharSet: "utf-8"
+AddHSTSHeader:  true

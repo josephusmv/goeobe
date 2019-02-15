@@ -1,0 +1,5 @@
+package eobereqhdler
+
+
+EOBE Request Handler package.
+The main struct is RequestHandler, as a eobehttp.RespFetcherInf implementation.

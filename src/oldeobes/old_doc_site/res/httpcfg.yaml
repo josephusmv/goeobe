@@ -1,0 +1,16 @@
+ServerName: "eobeserver"
+ServerVersion:  "0.1"
+
+## Page resources
+Page404FilePath:  "./res/page404.html"
+TemplateFileList: [
+  "./res/tmplt/index.html",
+  "./res/tmplt/viewallapi.html"]
+PreloadStaticFiles: true
+
+## Response option headers
+AddXSSProtectionHeader: true
+AddXContentHeader:  true
+AddCharSetHeader: true
+ValHeaderCharSet: "utf-8"
+AddHSTSHeader:  true

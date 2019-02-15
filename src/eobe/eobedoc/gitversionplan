@@ -1,0 +1,19 @@
+
+PLAN TO: 
+    Reinit a new repo with the version from 09~10 FEB after Alpha ready for eobecore and facade done.
+
+Planned TAGS in the current Repo:
+    Current: 
+        Branch: WORKS_ON_LOGIN_AND_API 
+            Tag: API_DONE_UT_2018_01_16 --> eobeapi alpha ready, passed some basic UT.
+        Branch: WORKS_ON_DEFN_FEATEST 
+            Tag: DEFNS_DONE_UT_2018_01_20 --> eobedefns alpha ready, passed some basic UT.
+            Tag: FEATURE_TEST_DONE_2018_02_03 --> Feature level testing done.
+        Branch: WORKS_ON_EOBECORE
+            Tag: CORE_DONE_UT_2018_02_10 --> Alpha ready for eobecore and facade.
+
+    Create a new repo after this is done. Move this old repo to local and delete remote in ECS.
+
+AND DO NOT WORKS FROM laptop wmu_cn on this new REPO anymore!!!!!!!!!
+AND DO NOT WORKS FROM laptop wmu_cn on this new REPO anymore!!!!!!!!!
+AND DO NOT WORKS FROM laptop wmu_cn on this new REPO anymore!!!!!!!!!

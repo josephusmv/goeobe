@@ -1,0 +1,17 @@
+.TestStyle {
+    size: 90px
+}
+#TestStyleSheet {
+    size: 90px
+}
+
+.parambox {
+   margin: 0.3em;
+   margin-left: 2em;
+   padding: 0.2em;
+   border: solid 0.2em transparent;
+}
+
+.inputsitems {
+   margin: 0.2em;
+}

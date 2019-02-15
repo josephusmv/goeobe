@@ -1,0 +1,100 @@
+################################################################
+# Test mgmt user as admin:
+########
+QueryActionName :	QueryUserTblForLogin
+TableName       :	USER_TBL
+QueryType       :	SELECT
+WhereReadyStr   :	"username=? AND userpwd=?"
+ExpectedColNames:	["username", "permission"]
+########
+QueryActionName :	QueryUserTbl
+TableName       :	USER_TBL
+QueryType       :	SELECT
+WhereReadyStr   :	"username=?"
+ExpectedColNames:	["username", "permission"]
+########
+QueryActionName :	QueryAllUserNames
+TableName       :	USER_TBL
+QueryType       :	SELECT
+WhereReadyStr   :	"TRUE"
+ExpectedColNames:	["username", "permission"]
+########
+QueryActionName :	QueryUserProfile
+TableName       :	USERPRFL_TBL
+QueryType       :	SELECT
+WhereReadyStr   :	"username=?"
+ExpectedColNames:	["username", "age", "phone1", "phone2", "Address", "crtdttmcrtdt"]
+########
+QueryActionName :	ADDNewUser
+TableName       :	USER_TBL
+QueryType       :	INSERT
+ExpectedColNames:	["username", "userpwd", "permission"]
+########
+QueryActionName :	ADDNewUserProfile
+TableName       :	USERPRFL_TBL
+QueryType       :	INSERT
+ExpectedColNames:	["username", "age", "phone1", "phone2", "Address", "crtdttmcrtdt"]
+########
+QueryActionName :	UpdateUser
+TableName       :	USER_TBL
+QueryType       :	UPDATE
+WhereReadyStr   :	"username=?"
+ExpectedColNames:	["username", "userpwd", "permission"]
+########
+QueryActionName :	UpdateUserProfile
+TableName       :	USERPRFL_TBL
+QueryType       :	UPDATE
+WhereReadyStr   :	"username=?"
+ExpectedColNames:	["username", "age", "phone1", "phone2", "Address"]
+########
+QueryActionName :	DeleteUser
+TableName       :	USER_TBL
+QueryType       :	DELETE
+WhereReadyStr   :	"username=?"
+########
+QueryActionName :	DeleteUserProfile
+TableName       :	USERPRFL_TBL
+QueryType       :	DELETE
+WhereReadyStr   :	"username=?"
+
+
+
+
+################################################################
+# Test user action about APILIST_TBL
+########
+QueryActionName : QueryAllApiNames
+TableName       :	APILIST_TBL
+QueryType       :	SELECT
+WhereReadyStr   :	"TRUE"
+ExpectedColNames:	["apiname", "apidesc"]
+########
+QueryActionName : QueryParamForAPI
+TableName       :	APIPARAM_TBL
+QueryType       :	SELECT
+WhereReadyStr   :	"apiname=?"
+ExpectedColNames:	["apiname", "paramname", "allwsrc", "datatype", "posnum", "paramdesc"]
+########
+QueryActionName : QueryResltForAPI
+TableName       :	APIRESLT_TBL
+QueryType       :	SELECT
+WhereReadyStr   :	"apiname=?"
+ExpectedColNames:	["apiname", "rsltname", "resltdesc"]
+
+
+
+
+
+################################################################
+#  Dummy To pass Load verification
+########
+QueryActionName :	UpdatesAppTaskEntry
+TableName       :	APPTASKS_TBL
+QueryType       :	UPDATE
+WhereReadyStr   :	"crtdt=?"
+ExpectedColNames:	["title"]
+########
+QueryActionName :	DeletTestUser
+TableName       :	USER_TBL
+QueryType       :	DELETE
+WhereReadyStr   :	"username=?"

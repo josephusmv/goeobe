@@ -1,0 +1,10 @@
+1. User 1st time visit: 
+    Send a SID with cookie
+    Add < Client NetID(IP+Port) and SID > to cltIPTable
+    SID expire with only By default 1 Days
+    Login user will change SID expire time to Login Expire time.
+
+2. DB Problem issue -1 important:!!!(high priority!)
+23:19:57	INSERT INTO PERMISSION_TBL (username, permissions) VALUES('FRESHGY', '0xFFFF')	
+Error Code: 1265. Data truncated for column 'permissions' at row 1	0.000 sec
+type converstion!!!!!!!!!!!!!!!!!!

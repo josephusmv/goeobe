@@ -1,0 +1,24 @@
+
+# Common
+RootFolder: "./res"
+
+# DB INFO
+DBName: mysql
+DBConnStr: root:123456@/THDATABASE
+
+# DEV Debug info
+EnableDEVLog: true
+LOGFolder: "./ALLLOGS"
+
+# HTTP defines
+HTTPPkgCfgFile:  "./res/httpcfg.yaml"
+HTTPPort: 8080
+HTTPSPort: 4030
+HasHTTP: TRUE
+NoHTTPS: TRUE
+
+
+# Module defines
+RootModule: "browsertest"
+Modules: [browsertest]
+IndexActionNames:  ["GetIndex"]

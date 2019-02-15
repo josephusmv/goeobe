@@ -1,0 +1,88 @@
+################################################################
+# User related
+########
+QueryActionName :	QueryUserTblForLogin
+TableName       :	USER_TBL
+QueryType       :	SELECT
+WhereReadyStr   :	"username=? AND userpwd=?"
+ExpectedColNames:	["username", "permission"]
+########
+QueryActionName :	QueryUserPermission
+TableName       :	USER_TBL
+QueryType       :	SELECT
+WhereReadyStr   :	"username=?"
+ExpectedColNames:	["username", "permission"]
+
+################################################################
+# API related
+########
+QueryActionName : QueryAllApiNames
+TableName       :	APILIST_TBL
+QueryType       :	SELECT
+WhereReadyStr   :	"TRUE"
+ExpectedColNames:	["apiname", "apidesc"]
+########
+QueryActionName : QueryParamForAPI
+TableName       :	APIPARAM_TBL
+QueryType       :	SELECT
+WhereReadyStr   :	"apiname=?"
+ExpectedColNames:	["apiname", "paramname", "allwsrc", "datatype", "posnum", "paramdesc"]
+########
+QueryActionName : QueryResltForAPI
+TableName       :	APIRESLT_TBL
+QueryType       :	SELECT
+WhereReadyStr   :	"apiname=?"
+ExpectedColNames:	["apiname", "rsltname", "resltdesc"]
+
+########
+QueryActionName :	AddNewAPI
+TableName       :	APILIST_TBL
+QueryType       :	INSERT
+ExpectedColNames:	["apiname", "apidesc"]
+########
+QueryActionName :	AddNewAPIParam
+TableName       :	APIPARAM_TBL
+QueryType       :	INSERT
+ExpectedColNames:	["apiname", "paramname", "allwsrc", "datatype", "posnum", "paramdesc"]
+########
+QueryActionName :	AddNewAPIReslt
+TableName       :	APIRESLT_TBL
+QueryType       :	INSERT
+ExpectedColNames:	["apiname", "rsltname", "resltdesc"]
+
+
+########
+QueryActionName :	ChangeNewAPI
+TableName       :	APILIST_TBL
+QueryType       :	UPDATE
+WhereReadyStr   :	"apiname=?"
+ExpectedColNames:	["apiname", "apidesc"]
+########
+QueryActionName :	ChangeNewAPIParam
+TableName       :	APIPARAM_TBL
+QueryType       :	UPDATE
+WhereReadyStr   :	"apiname=?"
+ExpectedColNames:	["apiname", "paramname", "allwsrc", "datatype", "posnum", "paramdesc"]
+########
+QueryActionName :	ChangeNewAPIReslt
+TableName       :	APIRESLT_TBL
+QueryType       :	UPDATE
+WhereReadyStr   :	"apiname=?"
+ExpectedColNames:	["apiname", "rsltname", "resltdesc"]
+
+
+########
+QueryActionName :	DeletAPI
+TableName       :	APILIST_TBL
+QueryType       :	DELETE
+WhereReadyStr   :	"apiname=?"
+########
+QueryActionName :	DeletAPIParam
+TableName       :	APIPARAM_TBL
+QueryType       :	DELETE
+WhereReadyStr   :	"apiname=?"
+########
+QueryActionName :	DeletAPIReslt
+TableName       :	APIRESLT_TBL
+QueryType       :	DELETE
+WhereReadyStr   :	"apiname=?"

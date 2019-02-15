@@ -1,0 +1,46 @@
+QueryActionName :	GetTestTbl
+TableName       :	DBTEST_TBL
+QueryType       :	SELECT
+WhereReadyStr   :	"username=?"
+ExpectedColNames:	["id", "username", "testfield1", "testfield2", "testfield3"]
+########
+
+QueryActionName :	GetRangeTbl
+TableName       :	DBRANGETEST_TBL
+QueryType       :	SELECT
+WhereReadyStr   :	"srchkey=?"
+ExpectedColNames:	["testfield1"]
+########
+
+QueryActionName :	GetTestTblByRange
+TableName       :	DBTEST_TBL
+QueryType       :	SELECT
+WhereReadyStr   :	"testfield1=?"
+ExpectedColNames:	["username", "testfield1", "testfield2", "testfield3"]
+########
+
+QueryActionName :	AddUser
+TableName       :	USER_TBL
+QueryType       :	INSERT
+ExpectedColNames:	["username", "userpwd", "permission"]
+########
+
+QueryActionName :	GetUserName
+TableName       :	USER_TBL
+QueryType       :	SELECT
+WhereReadyStr   :	"username=?"
+ExpectedColNames:	["username"]
+########
+
+QueryActionName :	GetUser
+TableName       :	USER_TBL
+QueryType       :	SELECT
+WhereReadyStr   :	"username=? AND userpwd=?"
+ExpectedColNames:	["permission"]
+########
+
+QueryActionName :	DeleteUser
+TableName       :	USER_TBL
+QueryType       :	DELETE
+WhereReadyStr   :	"username=?"
+########

@@ -1,0 +1,42 @@
+<html>
+    <head>
+        <script src="./jquery-3.2.1.min.js"></script>
+        <title> Add Cookie Sample </title>
+    </head>
+    <body>
+        <h1>
+            This is for testing add cookie.
+            Click on the add button to add a new cookie each time using AJAX. And print all front end cookies.
+        </h1>
+
+        <div id="responsetext">
+        </div>
+        <br/><br/>
+        <div id="resultarea">
+        </div>
+        <br/><br/>
+
+        <button type="button" onclick="addCookie()">RunTest</button>
+        <button type="button" onclick="showCookie()">Show Cookie</button>
+
+        <script>
+            function showCookie(){
+                $("#resultarea").empty();
+                $("#resultarea").append(document.cookie);
+            }
+
+            function addCookie(){
+                var formData = new FormData();    
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST', "AddCookie", true);
+                xhr.onreadystatechange = function () {
+                    if(xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+                    $("#responsetext").empty();
+                    $("#responsetext").append(xhr.responseText);
+                    }
+                };
+                xhr.send(formData);
+            }
+        </script>
+    </body>
+</html>

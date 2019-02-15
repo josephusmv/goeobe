@@ -1,0 +1,14 @@
+********** 
+HOW TO: Start with using EOBE as an application
+
+* step-1. Wrtie Action plan, as eobetests/tstdata/admintst/testplan.txt shows.
+    1.1 define user story, e.g.:
+        As administrator, I would like have capability of mgmt other users,
+        through HTTP requests to:
+        -POST-AJAX-> Login as admin
+        -GET-HTML-> View all users
+        -GET-HTML/AJAX-> Check one user detail
+        -POST-AJAX-> Add a new user(With promote in same request)
+        -POST-AJAX-> Delete an existed user
+        -POST-AJAX-> Modify user name and permission for an existed user
+        -POST-AJAX-> Logout

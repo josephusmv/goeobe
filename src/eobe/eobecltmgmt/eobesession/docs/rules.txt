@@ -1,0 +1,5 @@
+1. SID default expire 1 day.
+2. If login, SID will expire after 1 day of login expire.
+
+3. Expire checking will not happen for clients in an request handling process.
+    

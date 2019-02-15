@@ -1,0 +1,194 @@
+
+########
+ActionName: MakerIndex
+QueryParameters: []
+ExpectedResponse: 
+    ExpectedFMT:  RESP_HTML
+    HTMLFile:   index.html
+APICalls: [   
+    "(SaveRslt)QueryAllApiNames:    "]
+
+########
+ActionName: LoginUser
+QueryParameters: [username, password, expdays]
+ExpectedResponse: 
+    ExpectedFMT:  RESP_JSON
+APICalls: [   
+    "RemoteEncrypt: 127.0.0.1,8081, enc, ?password",
+    "QueryUserTblForLogin: ?username, ^encpassword", ## Save permission as a result, to let fe do diplay/hide button of permission.
+    "(SaveRslt)LogInUser: ?username, ?expdays"]
+
+########
+ActionName: LogoutUser
+QueryParameters: []
+ExpectedResponse: 
+    ExpectedFMT:  RESP_JSON
+APICalls: [   
+    "LogOutUser:",
+    "(SaveRslt)GetCurrentUser: "]
+
+########
+ActionName: ShowCurrentUser
+QueryParameters: []
+ExpectedResponse: 
+    ExpectedFMT:  RESP_JSON
+APICalls: [ 
+    "(SaveRslt)GetCurrentUser: "]
+
+################################################################
+# Add API
+########
+ActionName: AddNewAPIEntry
+QueryParameters: [apiname, apidesc]
+ExpectedResponse: 
+    ExpectedFMT:  RESP_JSON
+APICalls: [
+    "GetCurrentUser:  ",
+    "QueryUserPermission: ^retCurrentUserName",
+    "ValidateInt: ^permission, gt, $EDITORPERMISSION, $UserForbidden",    
+    "ValidateInt: ^retAffectedRows, gt, $ValueZero, $InvalidLogin",
+    "AddNewAPI: ?apiname, ?apidesc"]
+
+########
+ActionName: AddNewAPIParam
+QueryParameters: [apiname, paramname, allwsrc, datatype, posnum, paramdesc]
+ExpectedResponse: 
+    ExpectedFMT:  RESP_JSON
+APICalls: [
+    "GetCurrentUser:",
+    "QueryUserPermission: ^retCurrentUserName",
+    "ValidateInt: ^permission, gt, $EDITORPERMISSION, $UserForbidden",    
+    "ValidateInt: ^retAffectedRows, gt, $ValueZero, $InvalidLogin",
+    "AddNewAPIParam: ?apiname, ?paramname, ?allwsrc, ?datatype, ?posnum, ?paramdesc"]
+
+########
+ActionName: AddNewAPIRslt
+QueryParameters: [apiname, rsltname, resltdesc]
+ExpectedResponse: 
+    ExpectedFMT:  RESP_JSON
+APICalls: [
+    "GetCurrentUser:",
+    "QueryUserPermission: ^retCurrentUserName",
+    "ValidateInt: ^permission, gt, $EDITORPERMISSION, $UserForbidden",    
+    "ValidateInt: ^retAffectedRows, gt, $ValueZero, $InvalidLogin",
+    "AddNewAPIParam: ?apiname, ?rsltname, ?resltdesc"]
+
+
+################################################################
+# Read API
+########
+ActionName: FetchAPIList
+QueryParameters: [sidx, count]
+ExpectedResponse: 
+    ExpectedFMT:  RESP_HTML
+    HTMLFile:   viewallapi.html
+APICalls: [
+    "(FilterRows)GetMultiRows: QueryAllApiNames$$ ",
+    "(SaveRows)FilterMultiRows: ?sidx, ?count"]
+
+########
+ActionName: FetchAllAPIParams
+QueryParameters: [sidx, count]
+ExpectedResponse: 
+    ExpectedFMT:  RESP_JSON
+APICalls: [
+    "(FilterRows)GetMultiRows: QueryAllApiNames$$ ",
+    "(AsRange)FilterMultiRows: ?sidx, ?count",
+    "(SaveRows)RangeGetRows: QueryParamForAPI$$ ^apiname"]
+
+########
+ActionName: FetchAllAPIRslts
+QueryParameters: [sidx, count]
+ExpectedResponse: 
+    ExpectedFMT:  RESP_JSON
+APICalls: [
+    "(FilterRows)GetMultiRows: QueryAllApiNames$$ ",
+    "(AsRange)FilterMultiRows: ?sidx, ?count",
+    "(SaveRows)RangeGetRows: QueryResltForAPI$$ ^apiname"]
+
+################################################################
+# Delete API
+########
+ActionName: DelAPIEntry
+QueryParameters: [apiname]
+ExpectedResponse: 
+    ExpectedFMT:  RESP_JSON
+APICalls: [
+    "GetCurrentUser:  ",
+    "QueryUserPermission: ^retCurrentUserName",
+    "ValidateInt: ^permission, gt, $EDITORPERMISSION, $UserForbidden",    
+    "ValidateInt: ^retAffectedRows, gt, $ValueZero, $InvalidLogin",
+    "DeletAPI: ?apiname"]
+
+########
+ActionName: DelAPIParam
+QueryParameters: [apiname]
+ExpectedResponse: 
+    ExpectedFMT:  RESP_JSON
+APICalls: [
+    "GetCurrentUser:",
+    "QueryUserPermission: ^retCurrentUserName",
+    "ValidateInt: ^permission, gt, $EDITORPERMISSION, $UserForbidden",    
+    "ValidateInt: ^retAffectedRows, gt, $ValueZero, $InvalidLogin",
+    "DeletAPIParam: ?apiname"]
+
+########
+ActionName: AddNewAPIRslt
+QueryParameters: [apiname]
+ExpectedResponse: 
+    ExpectedFMT:  RESP_JSON
+APICalls: [
+    "GetCurrentUser:",
+    "QueryUserPermission: ^retCurrentUserName",
+    "ValidateInt: ^permission, gt, $EDITORPERMISSION, $UserForbidden",    
+    "ValidateInt: ^retAffectedRows, gt, $ValueZero, $InvalidLogin",
+    "DeletAPIReslt: ?apiname"]
+
+
+################################################################
+# Edit API
+########
+ActionName: EditAPIEntry
+QueryParameters: [apinameold, apinamenew, apidesc]
+ExpectedResponse: 
+    ExpectedFMT:  RESP_JSON
+APICalls: [
+    "GetCurrentUser:  ",
+    "QueryUserPermission: ^retCurrentUserName",
+    "ValidateInt: ^permission, gt, $EDITORPERMISSION, $UserForbidden",    
+    "ValidateInt: ^retAffectedRows, gt, $ValueZero, $InvalidLogin",
+    "ChangeNewAPI: ?apinameold; ?apinamenew, ?apidesc"]
+
+########
+ActionName: EditAPIParam
+QueryParameters: [apinameold, paramnameold, apiname, paramname, allwsrc, datatype, posnum, paramdesc]
+ExpectedResponse: 
+    ExpectedFMT:  RESP_JSON
+APICalls: [
+    "GetCurrentUser:",
+    "QueryUserPermission: ^retCurrentUserName",
+    "ValidateInt: ^permission, gt, $EDITORPERMISSION, $UserForbidden",    
+    "ValidateInt: ^retAffectedRows, gt, $ValueZero, $InvalidLogin",
+    "ChangeNewAPIParam: ?apinameold, ?paramnameold; ?apiname, ?paramname, ?allwsrc, ?datatype, ?posnum, ?paramdesc"]
+
+########
+ActionName: EditAPIRslt
+QueryParameters: [apinameold, rsltnameold, apiname, rsltname, resltdesc]
+ExpectedResponse: 
+    ExpectedFMT:  RESP_JSON
+APICalls: [
+    "GetCurrentUser:",
+    "QueryUserPermission: ^retCurrentUserName",
+    "ValidateInt: ^permission, gt, $EDITORPERMISSION, $UserForbidden",    
+    "ValidateInt: ^retAffectedRows, gt, $ValueZero, $InvalidLogin",
+    "ChangeNewAPIReslt: ?apinameold, ?rsltnameold; ?apiname, ?rsltname, ?resltdesc"]
+
+
+########
+ActionName: UploadFile
+QueryParameters: [HasUploadFileInKey]
+ExpectedResponse: 
+    ExpectedFMT:  RESP_JSON
+APICalls: [
+    "(SaveRslt)SaveFile: ?HasUploadFileInKey,  $LOCALPATH"]
+

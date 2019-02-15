@@ -1,0 +1,8 @@
+1. HasUploadFileInKey
+Defined: eobehttp/statics.go
+code:    const CStrUploadFileInKey = "HasUploadFileInKey"
+Desc:    When uploading files, MUST post this value in the form to specify the key for read file bytes. For example, Query: 	{"HasUploadFileInKey"="UserImage", "UserImage"=(filebytes...)}
+
+
+
+

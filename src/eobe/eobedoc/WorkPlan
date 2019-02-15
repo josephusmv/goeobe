@@ -1,0 +1,218 @@
+New Planned from 2018_01_25
+1. 02~03 FEB:
+	1. HTTP file upload and Cookie read and write
+	2. HTTP and parser test
+>???????????????
+
+
+
+
+
+
+
+
+
+
+
+1. 6~7 JAN:
+    Finish Client Manager Module.
+        Design/Plan an SID and Login Expire testing.
+        Design/Plan an Functional testing for Client Manager Module.
+        IF two above done, consider/POC DB permission table design.
+2. 13~14 JAN:
+    Start User Login/Logout/Regester API
+        --- Finish login try and need carry on feature tests and write feature related API during that.
+3. 20~21 JAN:
+    Finish User Login/Logout/Regester API.
+    start eobedefns:
+    	1. read DB action
+    	2. read user const string
+    	3. read module define
+    	4. read cfg file
+    	5. 
+4. 27~28 JAN:
+    Design feature testings.
+    Features:
+        1. Register/Login/Logout
+        2. End-2-End testings
+5. 02~03 FEB:
+    Data Validation API
+6. 10~10 And Chiniese New Year:
+    Facade and all done for Alpha version 0.0.1
+7. After Chiniese New Year:
+    EOBE version 0.0.1.Alpha release.
+    
+    
+    
+    
+----> 3. Works plan:		Finish User Login/Logout/Regester API.
+			3.1 Verify login..					           ---	OK, unit tested.
+			3.2 Password encryption                ---  Use remote encryption, open network interface.
+							In furture release, will includes a common remote interface.
+			3.3 verify login and logout            ---  Login, Logout API done, getCurrentUser	API done, unit testing done.
+			3.4 verify signon                      ---  
+					Only needs a unit test for SignOn, then alpha for ---> WORKS_ON_LOGIN_AND_API
+					--->
+						1.1 Add a new user
+							 ---> key fields verification
+							 ---> password encryption
+							 ---> to DB
+						1.2 login as that user
+						1.3 Do something without enough permission
+					--->
+						2.1 login as admin
+						2.2 prmote the new user with permission
+						2.3 log out
+					--->
+						3.1 login the new user
+						3.1 Do something with enough permission
+
+-----> 3.1 Work MileStone: API module Alpha.
+		For furture other APIes, wait for full Alpha then add as required.
+
+-----> 3.2 Work MileStone: Next step plan:
+		eobedefns
+			still use YAML.
+			===> DB defines: directly use the eobedb.QueryDefn, no more intermediate structure conversions!!!
+			===> user const string define: directly file read line by line.
+			===> CFG and module action define: follow the old design.
+						
+Time schedule:
+---> 20~21 JAN ::::::::::: Alpha ready for eobeapi and eobedefns :::::::::::
+	Alpha for API ready
+	Alpha for define ready	--- 3 days at most
+	Clear of the Testings:
+		two testing:
+			1. Feature layer testing(FLTst)
+				eobe API, DB, cltmgmt, load.
+			2. Transfer layer testing(TLTst)
+				eobe http, parser.
+		FLTst should wrote many output verify data for TLTst to use as input.
+	Feature testing started, framework ok.
+
+
+---> 27~28 JAN ::::::::::: Feature testing without HTTP :::::::::::
+	Design Unit testing for defines and API.	
+		--- As details as possible, for every feature I could thought.
+	Add new API as needed.
+	This step should be exactly simulating any possible customer behavior, only without HTTP part.
+	And try to make the unit testing AUTOmatically.
+	TRY to Make feature testing AUTO!!!
+	TRY to Make feature testing AUTO!!!
+	TRY to Make feature testing AUTO!!!
+	Don't forgot testing Expire!!!
+	Don't forgot testing Expire!!!
+	Don't forgot testing Expire!!!
+	feature testing covers:  eobe API, DB, cltmgmt, load.
+    DBQryInf should be shared, not created by each run!!	----- DONE
+	Planned tests:
+		------> Admin tests	: smoke test for API execute sequence.
+		------> User tests:   concurrency test.
+		------> User profile: File transfer tests --> user picture.
+		------> Expire and logout tests.
+    Emergency break: Get Client Manager a logger....
+
+	Client Manager Module bug addressed, but not easy to fix. 
+	*************** IMPORTANT !!!!!!!!!!!!!!!!
+	eobecltmgmt module need AUTOMATIC testing and refactoring a little bit!!!!!!!
+	eobecltmgmt module need AUTOMATIC testing and refactoring a little bit!!!!!!!
+	eobecltmgmt module need AUTOMATIC testing and refactoring a little bit!!!!!!!
+	eobecltmgmt module need AUTOMATIC testing and refactoring a little bit!!!!!!!
+    Finish File Related API, and tests..
+    Start transfer testing....
+	//!!!!Caution!!! Make sure APE CallSequence Do NOT return any unnessary errors.
+	//	Error are error!!, execute something fail are faile, don;t miss up!!
+
+
+---> 02~03 FEB :::::::::::: HTTP and parser testing :::::::::::
+	Finish transfer testing.
+	HTTP and parser testing := transfer testing.
+	Reuse the output verification codes from from feature testing.
+	Add HTTP file transfer tests and support
+    Start Facades.
+    >>>>> HTTP Package issue list:
+    >>>>>     1. Upload File Parsing(POST)
+    >>>>>     2. Cookie read and write.
+
+---> 09~10 FEB :::::::::::: Alpha ready for eobecore and facade :::::::::::
+	Unit testing and end-to-end testing.
+	Other further plans after feature testing done.
+    >>>>>Issues checklist:
+    >>>>>    1. coverage testing for each package.(3*5H++)
+    >>>>>    2. Log as required, and independent logs for each package.(5 * 2H++)
+    >>>>>    3. Name refactoring.(3H++)
+    >>>>>    4. Smoke test with framework(6H++) ---> create new package same level as eobe.
+    >>>>>    5. scenario testing using framework
+    >>>>>>>>>>  (3H++) 5.1 Scenario - 1: User login and fetch all API list page.
+    >>>>>>>>>>  (3H++) 5.2 Scenario - 2: Admin mng users, with user login and do action as verify.
+    >>>>>>>>>>  (3H++) 5.3 Scenario - 3: User read/add/update/delete API list.
+
+
+---> PLAN EOBE - ALPHA Release during Chinese New Year!
+---> PLAN EOBE - ALPHA Release during Chinese New Year!
+---> PLAN EOBE - ALPHA Release during Chinese New Year!
+
+
+FACADE ---- core.... simply write formal codes as tests from previous packages.
+Here are come module cannot independent to others:
+	1. eobeAPI: already involded all three low level pacakges.
+	2. eobereqhdler: one of the top level package, as an implementation of interface from HTTP, and caller of API.
+	3. eobecore, facade, start everything... cannot be independent, another top level package.
+	4. eobeload: only need eobedb, as db action define is import from eobedb.
+Those could as an independent packages:
+	1. eobedb
+	2. eobeHTTP
+	3. eobecltmgmt
+
+
+LEFT issue: 1-27
+	Has a lots of problems in HTTP package when apply two module, need to fix now.
+	Should assign a default Module, need to add codes now.
+	try more manual cases using browser with different pages and Action defines as SIMPLE example....
+	(to make SIMPLE is simple, consider add another example, like details example?)
+
+
+Updated 2/15, Finish HTTP refactoring works
+Updated 2/11, change to HTTP refactoring again:
+HTTP package should have no concept about module.	
+HTTP package just try to found requested files under the root path set to it.
+	--->Updated 2/15:  denied, now tested both root, submodule and so on.. works fine(per tested results.)
+If it did not found, then call request handler.
+ReqHdler should do more about parsing the module related informations.
+		 Should do more about URL redirect...
+May be I should make a URL redirect, because front-end has no chance(not good) to do so???
+Must done HTTPS:
+	1. POC from JOMUgo tutor...
+	2. Consider option from config.yaml to enable HTTPS and add CA...
+	3. Must has flexibility for whether using HTTPS or not....
+	4. HTTPS is mandatory for latter works, so must be done NOW!! before chinese new Year.
+
+Check planned requirements....If all full filled, starte formal eobe doc site now!!!    
+
+
+Updated 2/15, basically done all works on HTTPS, and module related. Turn to do Eobe doc site.
+Topic-1: Action Designer
+	Should consider release another tool as web application to make Site...rather than write yaml directly.
+
+Topic-2: API list
+	Add a special account could support remotely add API list. 
+	Use HTTPS and Current itreehouse domain, dev TLS.
+    
+
+ Updated 2/27, API Refactoring and test.
+	1. Refactoring
+		API Return and names and all others...a full refactoring.
+	2. Test		
+		Do API full coverage test, must cover 80% coverage rate.
+	3. Try not add New API(Only mandatory).
+		Don't do Programming interface now!!
+		Don't do Programming interface now!!
+		Don't do Programming interface now!!
+    
+    
+    
+dev mode..
+	1. 
+    
+    
+    

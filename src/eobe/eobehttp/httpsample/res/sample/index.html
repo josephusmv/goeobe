@@ -1,0 +1,26 @@
+<html>
+    <head>
+        <title> Test Index.html </title>
+    </head>
+    <body> 
+    <h1>
+    This is for purspose for testing and showing how to write template codes.
+    </h1>
+    <div>
+	{{ range $key, $value := .Rows }}
+        <li><strong>{{ $key }}:</strong>
+            {{ range $k, $v := $value  }}
+            <li><strong>{{ $k }}:</strong> {{ $v }}</li>
+            {{ end }}
+            {{index $value 1}}
+        </li>
+    {{ end }}
+    </div>
+
+</br>
+    <a href="file.html">Test File Upload...</a>.
+</br>
+    <a href="addcookie.html">Test add cookie...</a>.
+</br>
+    </body>
+</html>

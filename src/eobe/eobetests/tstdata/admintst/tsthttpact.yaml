@@ -1,0 +1,107 @@
+########
+ActionName: LoginAdmin
+QueryParameters: [usr, pwd, expdays]
+ExpectedResponse: 
+    ExpectedFMT:  RESP_AJAX
+APICalls: [
+    "RemoteEncrypt: 127.0.0.1,8081, enc, ?pwd",           
+    "(SaveRslt)QueryUserTblForLogin: ?usr, ^encpwd",    
+    "ValidateInt: ^retAffectedRows, gt, 0, $InvalidLogin",      
+    "ValidateInt: ^permission, gt, 256, $UserForbidden",
+    "(SaveRslt)LogInUser: ?usr, ?expdays" ]
+
+########
+ActionName: ViewAllUsers
+QueryParameters: [sidx, count]
+ExpectedResponse: 
+    ExpectedFMT:  RESP_HTML
+APICalls: [
+    "GetCurrentUser:",
+    "QueryUserTbl: ^retCurrentUserName",           
+    "ValidateInt: ^permission, gt, $GeneralPermission, $UserForbidden",    
+    "ValidateInt: ^retAffectedRows, gt, $ValueZero, $InvalidLogin",      
+    "(SaveRows)GetMultiRows: QueryAllUserNames$$ ",
+    "(FilterRows)FilterMultiRows: ?sidx, ?count"]
+
+########
+ActionName: ViewUserDetails
+QueryParameters: [username]
+ExpectedResponse: 
+    ExpectedFMT:  RESP_HTML
+APICalls: [
+    "GetCurrentUser:",
+    "QueryUserTbl: ^retCurrentUserName",
+    "ValidateInt: ^permission, ge, $AdminPermission, $UserForbidden",    
+    "(SaveRslt)QueryUserProfile: ?username"]
+
+
+########
+ActionName: AddNewUserByAdmin
+QueryParameters: [username, userpwd, permission, age, phone1, phone2, address]
+ExpectedResponse: 
+    ExpectedFMT:  RESP_JSON
+APICalls: [
+    "GetCurrentUser:",
+    "QueryUserTbl: ^retCurrentUserName",
+    "ValidateInt: ^permission, ge, $AdminPermission, $UserForbidden",
+    "RemoteEncrypt: $SERVERIP, $SERVERPOT, enc, ?userpwd",
+    "ADDNewUser: ?username, ^encuserpwd, ?permission",
+    "ValidateInt: ^retAffectedRows, eq, 1, $DBExeOperationFailed",
+    "GetServerDTTM: $DTTMFormat",
+    "ADDNewUserProfile: ?username, ?age, ?phone1, ?phone2, ?address, ^retServerDTTM",
+    "ValidateInt: ^retAffectedRows, eq, 1, $DBExeOperationFailed",
+    "(SaveRslt)QueryUserProfile: ?username"]
+
+
+########
+ActionName: ModifyUserByAdmin
+QueryParameters: [oldusername, username, userpwd, permission, age, phone1, phone2, address]
+ExpectedResponse: 
+    ExpectedFMT:  RESP_JSON
+APICalls: [
+    "GetCurrentUser:",
+    "QueryUserTbl: ^retCurrentUserName",
+    "ValidateInt: ^permission, ge, $AdminPermission, $UserForbidden",
+    "RemoteEncrypt: $SERVERIP, $SERVERPOT, enc, ?userpwd",
+    "UpdateUser: ?username, ^encuserpwd, ?permission; ?oldusername",
+    "ValidateInt: ^retAffectedRows, eq, 1, $DBExeOperationFailed",
+    "UpdateUserProfile: ?username, ?age, ?phone1, ?phone2, ?address; ?oldusername",
+    "ValidateInt: ^retAffectedRows, eq, 1, $DBExeOperationFailed",
+    "(SaveRslt)QueryUserProfile: ?username"]
+
+
+########
+ActionName: DeleteUserByAdmin
+QueryParameters: [username]
+ExpectedResponse: 
+    ExpectedFMT:  RESP_JSON
+APICalls: [
+    "GetCurrentUser:",
+    "QueryUserTbl: ^retCurrentUserName",
+    "ValidateInt: ^permission, ge, $AdminPermission, $UserForbidden",
+    "QueryUserTbl:?username",
+    "ValidateInt: ^permission, lt, $AdminPermission, $UserForbidden",
+    "DeleteUserProfile: ?username",
+    "(SaveRslt)DeleteUser: ?username",
+    "QueryUserTbl: ?username",
+    "ValidateInt: ^retAffectedRows, eq, 0, $DBExeOperationFailed"]
+    
+
+########
+ActionName: LogoutUser
+QueryParameters: []
+ExpectedResponse: 
+    ExpectedFMT:  RESP_JSON
+APICalls: [
+    "LogOutUser:",
+    "(SaveRslt)GetCurrentUser:"]
+    
+
+
+########
+ActionName: UploadFile
+QueryParameters: [filename]
+ExpectedResponse: 
+    ExpectedFMT:  RESP_JSON
+APICalls: [
+    "(SaveRslt)SaveFile: ?filename,  $LOCALPATH"]

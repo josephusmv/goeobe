@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    {{template "htmlhead"}}
+    </head>
+    <body class="fixed-nav sticky-footer bg" id="page-top">
+        {{template "sidenavi"}}
+        
+  
+  
+  <!-- Main Content -->
+  <div class="content-wrapper">
+    <div class="container-fluid">
+        
+      <!-- one cards row: 1st row: Server Info -->
+      <div class="row">
+           <!-- column, each column has one card -->
+          <div class="col-xl-6 col-sm-12 mb-3">
+            <!-- one card -->
+            <div class="card bg-light text-primary">
+                <div class="card-header">
+                  Server Info
+                </div>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item w-100" >
+                        <!-- Server Info -->
+                        <div class="row">               
+                            <div class="col-xl-6 col-sm-6 mb-3" >
+                                <div class="input-group">
+                                    <div class="input-group"  style="height: 2.9em">
+                                      <div class="input-group-prepend">
+                                        <span class="input-group-text" id="inputGroup-sizing-default" style="width:8rem">Server Name:</span>
+                                      </div>
+                                      <input type="text" class="form-control"  placeholder="My Server Name"
+                                             aria-label="Default"  aria-describedby="inputGroup-sizing-default">
+                                    </div>                     
+                                </div>   
+                            </div>          
+                            <div class="col-xl-6 col-sm-6 mb-3" >
+                                <div class="input-group">
+                                    <div class="input-group"  style="height: 2.9em">
+                                      <div class="input-group-prepend">
+                                        <span class="input-group-text" id="inputGroup-sizing-default" style="width:8rem">Server Ver:</span>
+                                      </div>
+                                      <input type="text" class="form-control" placeholder="Version 1.0"
+                                             aria-label="Default"  aria-describedby="inputGroup-sizing-default">
+                                    </div>                     
+                                </div>   
+                            </div>    
+                        </div>  <!-- row of Server Info -->
+                  </li>
+                </ul>
+            </div><!-- card -->   
+          </div><!-- column, each column has one card -->
+          
+           <!-- Debug info rows -->
+          <div class="col-xl-6 col-sm-12 mb-3">
+            <!-- one card -->
+            <div class="card bg-light text-primary">
+                <div class="card-header">
+                  Debug info
+                </div>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item w-100" >
+                    <!-- row  -->
+                    <div class="row">
+                            <!-- Add CharSet:-->
+                            <div class="col-xl-6 col-md-6 col-sm-6 mb-3" >
+                                <div class="input-group" style="height: 2.9em">
+                                    <div class="input-group-prepend">
+                                      <label class="input-group-text" for="inputGroupSelect01" style="width:8rem">Dev Mode:</label>
+                                    </div>
+                                    <select class="custom-select" id="inputGroupSelect01"  style="height: 2.9em">
+                                      <option value="1">No</option>
+                                      <option value="2">Yes</option>
+                                    </select>
+                                </div>
+                            </div> <!-- Add CharSet:-->
+                            
+                             <!--CharSet:-->   
+                            <div class="col-xl-6 col-md-6 col-sm-6 mb-3">
+                                <div class="input-group"  style="height: 2.9em">
+                                  <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default"  style="width:8rem">Preload File:</span>
+                                  </div>
+                                    <select class="custom-select" id="inputGroupSelect01"  style="height: 2.9em">
+                                      <option value="1">Yes</option>
+                                      <option value="2">No</option>
+                                    </select>
+                                </div>
+                            </div> <!--CharSet:-->       
+                    </div>   <!-- row of ports -->   
+                        
+                  </li>
+                </ul>
+            </div><!-- card -->   
+          </div><!-- column, each column has one card -->
+          
+      </div>   <!-- one cards row: 1st row: Server Info -->
+      
+      <!-- one cards row: 2nd row HTTP Protocal rows -->
+      <div class="row">
+           <!-- HTTP rows -->
+          <div class="col-xl-12 col-sm-12 mb-3">
+            <!-- one card -->
+            <div class="card bg-light text-primary">
+                <div class="card-header">
+                  Protocal Info
+                </div>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item w-100" >
+                        
+                      <!-- row of ports -->                      
+                        <div class="row">
+                            <!-- Has HTTP:-->
+                            <div class="col-xl-3 col-md-6 col-sm-6 mb-3" >
+                                <div class="input-group" style="height: 2.9em">
+                                    <div class="input-group-prepend">
+                                      <label class="input-group-text" for="inputGroupSelect01" style="width:7rem">Has HTTP:</label>
+                                    </div>
+                                    <select class="custom-select" id="inputGroupSelect01"  style="height: 2.9em">
+                                      <option value="1">No</option>
+                                      <option value="2">Yes</option>
+                                    </select>
+                                </div>                                
+                            </div> <!-- Has HTTP:-->
+                            
+                            
+                            <div class="col-xl-3 col-md-6 col-sm-6 mb-3">
+                                <div class="input-group"  style="height: 2.9em">
+                                  <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default"  style="width:7rem">HTTP Port:</span>
+                                  </div>
+                                  <input type="number" class="form-control" 
+                                         placeholder="8080"
+                                         aria-label="Default" 
+                                         aria-describedby="inputGroup-sizing-default">
+                                </div>
+                            </div> <!-- HTTP Port:-->             
+                            
+                            
+                            <div class="col-xl-3 col-md-6 col-sm-6 mb-3">
+                            <div class="input-group"  style="height: 2.9em">
+                                <div class="input-group-prepend">
+                                  <label class="input-group-text" for="inputGroupSelect01" style="width:7rem">Has HTTPS:</label>
+                                </div>
+                                <select class="custom-select" id="inputGroupSelect01"  style="height: 2.9em">
+                                  <option value="1">Yes</option>
+                                  <option value="2">No</option>
+                                </select>
+                              </div>                                
+                            </div> <!-- Has HTTPS:-->    
+                            
+                            <div class="col-xl-3 col-md-6 col-sm-6 mb-3">
+                                <div class="input-group"  style="height: 2.9em">
+                                  <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default"  style="width:7rem">HTTPS Port:</span>
+                                  </div>
+                                  <input type="number" class="form-control" 
+                                         placeholder="4030"
+                                         aria-label="Default" 
+                                         aria-describedby="inputGroup-sizing-default">
+                                </div>
+                            </div> <!-- HTTPS Port-->  
+                        </div>  <!-- row of ports -->
+                      
+                        <!-- CertFilePath: -->
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-default"  style="width:7rem">CertFilePath:</span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="./res/sslkeys/cert.pem"
+                                   aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                        </div>
+                        <!-- KeyFilePath -->
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-default"  style="width:7rem">KeyFilePath</span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="./res/sslkeys/key.pem"
+                                   aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                        </div>
+                  </li>
+                </ul>
+            </div><!-- card -->   
+          </div><!-- column, each column has one card -->
+      </div>   <!-- one cards row -->
+      
+      
+      <!-- one cards row: 4th row template files -->
+      <div class="row">
+          <div class="col-xl-12 col-sm-12 mb-3">
+              
+    <!-- DataTables Card-->
+    <div class="card mb-3">
+        <div class="card-header">
+          <i class="fa fa-table"></i> Template Files
+        </div>
+
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+
+              <tbody id="tmpltFileTBody" >          
+                <tr id="trFileRow0"   style="border: 0 transparent">
+                    <td  style="border: 0 ">
+                    <div class="input-group">
+                      <input type="text" class="form-control" 
+                             placeholder="Template file full path" 
+                             aria-label="Template file full path" 
+                             aria-describedby="basic-addon2" style="height: 2.5em">
+                      <div class="input-group-append">
+                        <a class="nav-link ml-2 mr-1" href="javascript:void(0);" onclick="addNewRows();" style="font-size: 2em; padding: 0">
+                            <i class="fas fa-plus-square"></i>
+                        </a>
+                         <a class="nav-link ml-1 mr-1 minus" href="javascript:void(0);" onclick="removeNewRows('trFileRow0');" style="font-size: 2em; padding: 0">
+                            <i class="fas fa-minus-square"></i>
+                         </a>
+                      </div>
+                    </div>
+                    </td>
+                </tr>
+             
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+    </div><!-- DataTables Card-->
+    <!-- /.container-fluid-->
+    
+
+          </div><!-- column, each column has one card -->
+      </div>      <!-- one cards row: last row Save result HTTP -->
+      
+      
+      <!-- one cards row: last 2nd rd row Response Header options -->
+      <div class="row">
+           <!-- HTTP rows -->
+          <div class="col-xl-12 col-sm-12 mb-3">
+            <!-- one card -->
+            <div class="card bg-light text-primary">
+                <div class="card-header">
+                  Response Header options
+                </div>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item w-100" >
+                    <!-- row  -->                      
+                    <div class="row">
+                            <!-- Add CharSet:-->
+                            <div class="col-xl-6 col-md-6 col-sm-6 mb-3" >
+                                <div class="input-group" style="height: 2.9em">
+                                    <div class="input-group-prepend">
+                                      <label class="input-group-text" for="inputGroupSelect01" style="width:15rem">Add CharSet:</label>
+                                    </div>
+                                    <select class="custom-select" id="inputGroupSelect01"  style="height: 2.9em">
+                                      <option value="1">Yes</option>
+                                      <option value="2">No</option>
+                                    </select>
+                                </div>                                
+                            </div> <!-- Add CharSet:-->
+                            
+                             <!--CharSet:-->   
+                            <div class="col-xl-6 col-md-6 col-sm-6 mb-3">
+                                <div class="input-group"  style="height: 2.9em">
+                                  <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default"  style="width:15rem">CharSet:</span>
+                                  </div>
+                                  <input type="text" class="form-control" 
+                                         placeholder="utf-8"
+                                         aria-label="Default" 
+                                         aria-describedby="inputGroup-sizing-default"
+                                         value="utf-8">
+                                </div>
+                            </div> <!--CharSet:-->       
+                    </div>   <!-- row of ports -->   
+                         
+                    
+                    <!-- row -->                                  
+                    <div class="row"> 
+                             <!--Add XSS protection header:-->    
+                            <div class="col-xl-6 col-md-6 col-sm-6 mb-3">
+                            <div class="input-group"  style="height: 2.9em">
+                                <div class="input-group-prepend">
+                                  <label class="input-group-text" for="inputGroupSelect01" style="width:15rem;">Add XSS protection header:</label>
+                                </div>
+                                <select class="custom-select" id="inputGroupSelect01"  style="height: 2.9em;">
+                                  <option value="1">Yes</option>
+                                  <option value="2">No</option>
+                                </select>
+                              </div>                                
+                            </div> <!--Add XSS protection header:-->  
+                            
+                            <!-- Add XContent Header:-->  
+                            <div class="col-xl-6 col-md-6 col-sm-6 mb-3">
+                                <div class="input-group"  style="height: 2.9em">
+                                  <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default"  style="width: 15rem">Add XContent Header:</span>
+                                  </div>
+                                    <select class="custom-select" id="inputGroupSelect01"  style="height: 2.9em;">
+                                      <option value="1">Yes</option>
+                                      <option value="2">No</option>
+                                    </select>
+                                </div>
+                            </div> <!-- Add XContent Header:-->  
+                    </div>   <!-- row --> 
+                         
+                    
+                    <!-- row -->                                  
+                    <div class="row">
+                           <!-- Add HSTS Header:-->  
+                            <div class="col-xl-6 col-md-6 col-sm-6 mb-3">
+                                <div class="input-group"  style="height: 2.9em">
+                                  <div class="input-group-prepend">
+                                    <span class="input-group-text" id="inputGroup-sizing-default"  style="width: 15rem">Add HSTS Header:</span>
+                                  </div>
+                                    <select class="custom-select" id="inputGroupSelect01"  style="height: 2.9em;">
+                                      <option value="1">Yes</option>
+                                      <option value="2">No</option>
+                                    </select>
+                                </div>
+                            </div> <!-- Add HSTS Header:-->  
+                    </div>  <!-- row -->
+                  </li>
+                </ul>
+            </div><!-- card -->   
+          </div><!-- column, each column has one card -->
+      </div>      <!-- one cards row:  last 2nd Save result HTTP -->
+            
+      <!-- one cards row: Save button -->
+      <div class="row mb-5 ml-3 mr-3">
+        <a class="btn btn-primary w-100" href="javascript:void(0);" id="toggleSaveCfg">Save HTTP Configurations</a>
+      </div> <!-- one cards row: Modules -->
+      
+    </div>  <!-- /.container-fluid-->
+  
+    
+    <!-- /.content-wrapper-->
+    <footer class="sticky-footer">
+      <div class="container">
+        <div class="text-center">
+          <small>Copyright © Jomu_7@go-eobe.com 2018</small>
+        </div>
+      </div>
+    </footer>
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+      <i class="fa fa-angle-up"></i>
+    </a>
+    
+    <!-- About Modal-->
+    <div class="modal fade" id="MailBoxInfoDialog" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title" id="exampleModalLabel"> About </h4>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">Author: Josephus<br/>Mail: jomu_7@goeobe.com<br/>Copyright © Jomu_7@goeobe.com 2018</div>
+          <div class="modal-footer">
+            <button class="btn btn-primary" type="button" data-dismiss="modal">Got it!</button>
+          </div>
+        </div>
+      </div>
+    </div><!-- About Modal-->
+    
+    {{template "aboutmodal"}}
+    {{template "delayload"}}
+    
+  </div>
+  <!-- Main Content -->
+    
+    <!-- Bootstrap core JavaScript-->
+    <script src="../js/jquery-3.2.1.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script defer src="../js/modulemgr.js"></script>
+    <!--   $(document).ready -->
+    <script>
+        $(document).ready(function(){
+            $('#collapseConfigurations').collapse('show');
+            initModuleNaviLinks();
+        });
+        
+        var lastIndex = 1;
+        function addNewRows(){
+            lastIndex++;
+            var newTr = $("#trFileRow0").clone();
+            var newTrID = "trFileRow" + lastIndex;
+            newTr.attr("id", newTrID);
+            var removeFunc = "removeNewRows('"+ newTrID + "');"
+            newTr.find(".minus").attr("onclick", removeFunc);
+            newTr.appendTo("#tmpltFileTBody");
+        }
+        
+        function removeNewRows(trId){
+            if(trId=="trFileRow0"){
+                var errMsgStr = "Cannot remove this first row.<br/>(Consider put your index.html here.)"
+                $('#errorDialogModal').find("#errorDialogModalErrorMsg").html(errMsgStr);
+                $('#errorDialogModal').modal('toggle');
+                return;
+            }
+            $("#"+trId).remove();
+        }
+    </script><!--   $(document).ready -->
+    
+    <!--End of body -->
+</body>
+
+</html>

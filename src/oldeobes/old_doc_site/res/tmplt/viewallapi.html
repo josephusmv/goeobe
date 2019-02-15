@@ -1,0 +1,105 @@
+<html>
+    <head>
+        <script src="js/jquery-3.2.1.min.js"></script>
+        <title> View All API page </title>
+    </head>
+    <body>
+        <h1>
+            This is View All API page.
+            Click on the add button to load API params and API results.
+        </h1>
+ 
+        <div>
+            <p> Range the KVMap </p>
+            {{ range $key, $value := .KVMap }}
+                <li><strong>{{ $key }}</strong>: {{ $value }}</li>
+            {{ end }}
+            </div>
+            <div>
+            <p> Range the Rows </p>
+            {{ range $key, $value := .Rows }}
+                <li><strong>{{ $key }}:</strong>
+                    {{ range $k, $v := $value  }}
+                    <li><strong>{{ $k }}:</strong> {{ $v }}</li>
+                    {{ end }}
+                    {{index $value 1}}
+                </li>
+            {{ end }}
+        </div>
+        
+        <br/>        
+        <br/>        
+        <br/>        
+
+        <button type="button" onclick="ShowAllAPIParam()">Load API Params</button>
+        <br/>        
+        <br/>        
+        <br/>        
+        <button type="button" onclick="ShowAllAPIResults()">Load API Results</button>
+
+        <br/>        
+        <br/>        
+        <br/>        
+        <div id="resultarea">
+
+        </div>
+
+        <div id="cuser"></div>
+        <button type="button" onclick="ShowCurrentUsers()">Show Current Login User</button>
+        <br/>        
+        <br/>
+        
+        <br/>        
+        <br/> 
+    </br>
+    <a href="/">home page...</a>.
+    </br>       
+        <br/>
+        <a href="html/editapiitem.html">Add API...</a>.
+        
+        <script>
+            function ShowAllAPIParam(){
+                var formData = new FormData();    
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST', "api/FetchAllAPIParams", true);
+                formData.append('sidx', "0")
+                formData.append("count", "100");
+                xhr.onreadystatechange = function () {
+                    if(xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+                        $("#resultarea").empty();
+                        $("#resultarea").append(xhr.responseText);
+                    }
+                };
+                xhr.send(formData);
+            }
+            
+            function ShowAllAPIResults(){
+                var formData = new FormData();    
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST', "api/FetchAllAPIRslts", true);
+                formData.append('sidx', "0")
+                formData.append("count", "100");
+                xhr.onreadystatechange = function () {
+                    if(xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+                        $("#resultarea").empty();
+                        $("#resultarea").append(xhr.responseText);
+                    }
+                };
+                xhr.send(formData);
+            }
+
+            function ShowCurrentUsers(){
+                var formData = new FormData();    
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST', "api/ShowCurrentUser", true);
+                xhr.onreadystatechange = function () {
+                    if(xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+                        $("#cuser").empty();
+                        $("#cuser").append(xhr.responseText);
+                    }
+                };
+                xhr.send(formData);
+            }
+        </script>
+    </body>
+</html>

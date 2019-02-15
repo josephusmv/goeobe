@@ -1,0 +1,20 @@
+<html>
+    <head>
+        <title> Test Dynamic.html </title>
+    </head>
+    <body> 
+    <h1>
+    This is for purspose for testing and showing how to write template codes.
+    </h1>
+    <div>
+	{{ range $key, $value := .Data }}
+        <li><strong>{{ $key }}:</strong>
+            {{ range $k, $v := $value  }}
+            <li><strong>{{ $k }}:</strong> {{ $v }}</li>
+            {{ end }}
+            {{index $value 1}}
+        </li>
+    {{ end }}
+    </div>
+    </body>
+</html>

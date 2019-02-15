@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>File Upload Sample</title>
+    </head>
+
+    <body>
+
+    <h2>AJAX post</h2>
+    <p>Will use the AJAX post way to upload file.</p>
+    <!-- The HTML -->
+    <input type="file" id="myFile">
+    <input type="button"value="submit"  onclick="uploadFile()" />
+    <br/>
+    <script type="text/javascript">
+        function uploadFile() {
+            var fileInput = document.getElementById('myFile');
+            var file = fileInput.files[0];
+            var formData = new FormData();
+            formData.append('HasUploadFileInKey', fileInput.files[0].name)
+            formData.append(fileInput.files[0].name, file);
+
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', "UploadFile", true);
+            xhr.onreadystatechange = function () {
+                if(xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+                  alert(xhr.responseText);
+                }
+            };
+            xhr.send(formData);
+        }
+    </script>
+
+</body>
+
+</html>

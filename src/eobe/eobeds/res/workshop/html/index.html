@@ -1,0 +1,49 @@
+<html>
+    <head>
+    {{template "htmlhead"}}
+    </head>
+    <body class="fixed-nav sticky-footer bg" id="page-top">
+        {{template "sidenavi"}}
+        
+    <!-- Main Content -->
+    <div class="content-wrapper">
+    <div class="container-fluid">      
+      <h1>Eobe Design studio</h1>
+      <hr>
+      <p> Use eobe to make Ease Of your Backe-End works. To start:</p>
+      <ul>
+          <li> Define basic parameters using configuration page. </li>
+          <li> Define modules using configuration page. </li>
+          <li> Define DBActions for each module. </li>
+          <li> Define User constants for each module. </li>
+          <li> Define HTTPActions for each module. </li>
+      </ul>
+      <a class="btn btn-primary" href="javascript:void(0);" onclick="CreateNewProj('');" id="toggleCreateNew" style="width:20em">Create new</a>
+      <a class="btn btn-primary" href="javascript:void(0);" onclick="LoadProj('');" id="toggleLoadProject" style="width:20em">Load existed project</a>
+      <a class="btn btn-primary" href="javascript:void(0);" onclick="OpenSampleProj('');" id="toggleLoadSample" style="width:20em">Load sample project</a>
+     </div>
+    </div>
+    
+    <!-- /.content-wrapper-->
+    <footer class="sticky-footer">
+      <div class="container">
+        <div class="text-center">
+          <small>Copyright © Eobe.com 2018</small>
+        </div>
+      </div>
+    </footer>
+    
+    {{template "aboutmodal"}}
+    {{template "delayload"}}
+    
+    <!-- script for this index.html file -->    
+    <script>
+        $(document).ready(function(){
+            $('#collapseConfigurations').collapse('hide');
+            initModuleNaviLinks();
+        })
+    </script><!-- script for this index.html file -->
+    
+    
+    </body>
+</html>

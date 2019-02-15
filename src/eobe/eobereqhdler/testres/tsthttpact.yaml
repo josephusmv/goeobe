@@ -1,0 +1,125 @@
+
+########
+ActionName: GetIndex
+QueryParameters: [username, userpwd, expdays]
+ExpectedResponse: 
+    ExpectedFMT:  RESP_HTML
+    HTMLFile:   index.html
+APICalls: [   
+    "QueryUserTblForLogin: ?username, ?userpwd",
+    "ValidateInt: ^retAffectedRows, gt, 0, $InvalidLogin",      
+    "ValidateInt: ^permission, gt, 128, $UserForbidden",
+    "(SaveRslt)LogInUser: ?username, ?expdays",
+    "GetCurrentUser:",
+    "(SaveRslt)QueryUserTbl: ^retCurrentUserName"]
+
+########
+ActionName: LoginUser
+QueryParameters: [usr, pwd, expdays]
+ExpectedResponse: 
+    ExpectedFMT:  RESP_AJAX
+APICalls: [
+    "RemoteEncrypt: 127.0.0.1,8081, enc, ?pwd",           
+    "QueryUserTblForLogin: ?usr, ?pwd",    
+    "ValidateInt: ^retAffectedRows, gt, 0, $InvalidLogin",      
+    "ValidateInt: ^permission, gt, 128, $UserForbidden",
+    "(SaveRslt)LogInUser: ?usr, ?expdays",
+    "GetCurrentUser:",
+    "(SaveRslt)QueryUserTbl: ^retCurrentUserName"]
+
+########
+ActionName: FetchAPIList
+QueryParameters: [sidx, count]
+ExpectedResponse: 
+    ExpectedFMT:  RESP_HTML
+APICalls: [
+    "GetCurrentUser:",
+    "QueryUserTbl: ^retCurrentUserName",           
+    "ValidateInt: ^permission, gt, $GeneralPermission, $UserForbidden",
+    "(SaveRows)GetMultiRows: QueryAllApiNames$$ ",
+    "(FilterRows)FilterMultiRows: ?sidx, ?count"]
+
+
+########
+ActionName: FetchAllAPIParams
+QueryParameters: []
+ExpectedResponse: 
+    ExpectedFMT:  RESP_JSON
+APICalls: [
+    "GetCurrentUser:",
+    "QueryUserTbl: ^retCurrentUserName",           
+    "ValidateInt: ^permission, gt, $GeneralPermission, $UserForbidden",
+    "(AsRange)GetMultiRows: QueryAllApiNames$$ ",
+    "(SaveRows)RangeGetRows: QueryParamForAPI$$ ^apiname"]
+
+########
+ActionName: FetchAllAPIRslts
+QueryParameters: []
+ExpectedResponse: 
+    ExpectedFMT:  RESP_JSON
+APICalls: [
+    "GetCurrentUser:",
+    "QueryUserTbl: ^retCurrentUserName",           
+    "ValidateInt: ^permission, gt, $GeneralPermission, $UserForbidden",
+    "(AsRange)GetMultiRows: QueryAllApiNames$$ ",
+    "(SaveRows)RangeGetRows: QueryResltForAPI$$ ^apiname"]
+
+
+########
+ActionName: AddNewUserByAdmin
+QueryParameters: [username, userpwd, permission, age, phone1, phone2, address]
+ExpectedResponse: 
+    ExpectedFMT:  RESP_JSON
+APICalls: [
+    "GetCurrentUser:",
+    "QueryUserTbl: ^retCurrentUserName",
+    "ValidateInt: ^permission, ge, $AdminPermission, $UserForbidden",
+    "RemoteEncrypt: $SERVERIP, $SERVERPOT, enc, ?userpwd",
+    "ADDNewUser: ?username, ^encuserpwd, ?permission",
+    "ValidateInt: ^retAffectedRows, eq, 1, $DBExeOperationFailed",
+    "GetServerDTTM: $DTTMFormat",
+    "ADDNewUserProfile: ?username, ?age, ?phone1, ?phone2, ?address, ^retServerDTTM",
+    "ValidateInt: ^retAffectedRows, eq, 1, $DBExeOperationFailed",
+    "(SaveRslt)QueryUserProfile: ?username"]
+
+########
+ActionName: ValidateCrntUsr
+QueryParameters: [user]
+ExpectedResponse: 
+    ExpectedFMT:  RESP_JSON
+APICalls: [
+    "(SaveRslt)GetCurrentUser:",
+    "(SaveRslt)ValidateStrEqual: ?user,  ^retCurrentUserName, $FORMATEINVALID"]
+
+########
+ActionName: UploadFile
+QueryParameters: [filename]
+ExpectedResponse: 
+    ExpectedFMT:  RESP_JSON
+APICalls: [
+    "(SaveRslt)SaveFile: ?filename,  $LOCALPATH"]
+
+
+########
+ActionName: LogoutUser
+QueryParameters: []
+ExpectedResponse: 
+    ExpectedFMT:  RESP_JSON
+APICalls: [
+    "LogOutUser:",
+    "(SaveRslt)GetCurrentUser:"]
+    
+
+################################################
+######## Dummy To pass Load verification
+########
+ActionName: LoginAdmin
+QueryParameters: [usr, pwd, expdays]
+ExpectedResponse: 
+    ExpectedFMT:  RESP_AJAX
+APICalls: [
+    "RemoteEncrypt: 127.0.0.1,8081, enc, ?pwd",           
+    "(SaveRslt)QueryUserTblForLogin: ?usr, ^encpwd",    
+    "ValidateInt: ^retAffectedRows, gt, 0, $InvalidLogin",      
+    "ValidateInt: ^permission, gt, 256, $UserForbidden",
+    "(SaveRslt)LogInUser: ?usr, ?expdays" ]

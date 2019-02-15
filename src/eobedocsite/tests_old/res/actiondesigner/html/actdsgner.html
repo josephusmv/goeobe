@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>EOBE Action Designer</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        {{template "commonheader"}}
+    </head>
+    <body>
+        {{template "navibar"}}
+        <div>TODO write content</div>
+        <br/>
+        <br/>
+        <button type="button" onclick="LoginAdmin()">login admin</button>
+        <br/>
+        <br/>
+        <button type="button" onclick="Logout()">Log out</button>
+        <br/>
+        <br/>
+        <br/>
+        <button type="button" onclick="GetLoginUser()">Show Current Login User</button>
+        <br/>
+        <br/>
+        <div id="cuser"></div>
+        <script>
+            function LoginAdmin(){  
+                var xhr = new XMLHttpRequest();
+                var formData = new FormData();
+                formData.append('username', "sadmin")
+                formData.append("password", "superadmin");
+                formData.append("expdays", "7");
+                xhr.open('POST', "LoginUser", true);
+                xhr.onreadystatechange = function () {
+                    if(xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+                        alert(xhr.responseText);
+                    }
+                };
+                xhr.send(formData);
+            }
+            function Logout(){  
+                var xhr = new XMLHttpRequest();
+                var formData = new FormData();
+                xhr.open('POST', "LogoutUser", true);
+                xhr.onreadystatechange = function () {
+                    if(xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+                        alert(xhr.responseText);
+                    }
+                };
+                xhr.send(formData);
+            }
+            function GetLoginUser(){
+                var formData = new FormData();    
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST', "ShowCurrentUser", true);
+                xhr.onreadystatechange = function () {
+                    if(xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+                        var myObj = JSON.parse(this.responseText);
+                        var user = myObj.singlerow.retCurrentUserName
+                        if (user == "") {
+                            user = "no user logged in."
+                        }
+                        $("#cuser").empty();
+                        $("#cuser").append(user);
+                    }
+                };
+                xhr.send(formData);
+            }
+        </script>
+    </body>
+</html>

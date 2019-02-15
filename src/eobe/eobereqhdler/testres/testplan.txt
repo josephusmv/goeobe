@@ -1,0 +1,24 @@
+1. Test user general operations, focus on multi-threading concurrancy:
+    Requests:
+    1.1 
+    -POST-HTML-> Login users.
+        0). Query Values and API calls: LoginUser
+        1). HTTP response:
+            Response should include permission.
+            HTML template should do case switch based on permission
+            Using GO template to draw different HTML results to client.
+        3). Front end expected processing:
+            Display the recieved HTML file.
+        4). Verify expected test result on feature testing stage:
+            verify username and permission is correct.
+
+    -GET-HTML-> Display API List
+        0). Query Values and API calls: FetchAPIList
+        1). HTTP response:
+            Response.
+            HTML template should do case switch based on permission
+            Using GO template to draw different HTML results to client.
+        3). Front end expected processing:
+            Display the recieved HTML file, and send request fron OnLoad event to fetch details of each API.
+        4). Verify expected test result on feature testing stage:
+            verify username and permission is correct.

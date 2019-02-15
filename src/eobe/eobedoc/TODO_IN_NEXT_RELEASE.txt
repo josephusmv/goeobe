@@ -1,0 +1,18 @@
+1. Redirect API and HTTP
+    User need to have a redirect after some request.
+
+2. Strongger DB functions:
+    e.g.: One Query Define for an search to all values may support following:
+        --> All rows
+        --> Rows index 0-1, 5-6, 7-11....Partially return(may need API and support in current version)
+        --> support one query define with different where condition selection:  
+            Where:  permission>?  AND username=? AND title=?
+            Could works sepereately as 
+                Where:  permission>?  AND username=? AND title=?
+                Where:  permission>?  
+                Where:  permission>?  AND title=?
+                Where:  username=?  AND title=?
+                ....
+3. DB cache should be considered with cltmngmt and SID, --- eobescl: storage cache layer
+    add a new DB cache package(layer), between DB and API
+    Support change DB package from that new DBCache Layer

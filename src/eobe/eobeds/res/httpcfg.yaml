@@ -1,0 +1,36 @@
+ServerName: "eobeserver"
+ServerVersion:  "0.1"
+
+## Page resources
+Page404FilePath:  "./res/workshop/html/page404.html"
+TemplateFileList: [
+  "./res/workshop/common/sidenavi.html",
+  "./res/workshop/common/aboutmodal.html",
+  "./res/workshop/common/htmlhead.html",
+  "./res/workshop/common/delayload.html",
+  "./res/workshop/dialogs/AddResDfnDlg.html",
+  "./res/workshop/html/index.html",
+  "./res/workshop/html/ovrlcfg.html",
+  "./res/workshop/html/httpcfg.html",
+  "./res/workshop/html/resdefine.html",
+  "./res/workshop/html/dbactions.html",
+  "./res/workshop/html/userconst.html",
+  "./res/workshop/html/apilist.html"]
+  
+HTTPPort: 8080
+HTTPSPort: 4030
+HasHTTP: TRUE
+NoHTTPS: FALSE
+CertFilePath: "./res/sslkeys/cert.pem"
+KeyFilePath: "./res/sslkeys/key.pem"
+
+PreloadStaticFiles: false
+DevMode: true  
+
+## Response option headers
+AddXSSProtectionHeader: true
+AddXContentHeader:  true
+AddCharSetHeader: true
+ValHeaderCharSet: "utf-8"
+AddHSTSHeader:  true
+

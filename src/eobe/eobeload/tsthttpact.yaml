@@ -1,0 +1,58 @@
+########
+ActionName: LoginAdmin
+QueryParameters: [usr, pwd, expdays]
+ExpectedResponse: 
+    ExpectedFMT:  RESP_AJAX
+APICalls: [
+    "RemoteEncrypt: 127.0.0.1,8081, enc, ?pwd",           
+    "(SaveRslt)QueryUserTblForLogin: ?usr, ^encpwd",    
+    "ValidateInt: ^retAffectedRows, gt, 0, $InvalidLogin",      
+    "ValidateInt: ^permission, gt, $AdminPermission, $UserForbidden",
+    "(SaveRslt)LogInUser: ?usr, ?expdays" ]
+
+########
+########################################
+######## AddNewUser
+ActionName: AddNewUser
+QueryParameters: [username, pwd, privilledge]
+ExpectedResponse: 
+    ExpectedFMT:  RESP_HTML
+    HTMLFile: inDeX
+APICalls: [
+    "API_ValidateStr_REX: ?username, UNAMEREX",
+    "API_ValidateStr_REX: ?pwd, UPWDREX",
+    "API_GetMyUserName: NA",
+    "QueryMyPrivilledge: NA",
+    "API_ValidateStr_REX: ^user_group, UGROUPADMIN",
+    "API_ValidateInt: ^user_privledge, ge, 3",
+    "AddNewUser: ?",
+    "AddNewPrevil: ?"]
+########
+ActionName: LoginUser
+QueryParameters: [username, pwd, privilledge]
+ExpectedResponse: 
+    ExpectedFMT:  RESP_HTML
+    HTMLFile: inDeX
+APICalls: [
+    "RemoteEncrypt: 127.0.0.1,8081, enc, ?pwd",
+    "QueryUserTbl: ?usr, ^encpwd",
+    "ValidateInt: ^retAffectedRows, gt, 0, $NOSUCHUSER",
+    "LogInUser: ?usr, ?expdays",
+    "QueryPermissionTbl: ^permission_id",
+    "ValidateInt: ^permissions, gt, 256, $USERFORBIDDEN",
+    "(SaveRows)GetMultiRows: QueryAPPTASKSMultiByName $$ ?usr"]
+########
+########
+ActionName: LoginUser
+QueryParameters: [username, pwd, privilledge]
+ExpectedResponse: 
+    ExpectedFMT:  RESP_HTML
+    HTMLFile: inDeX
+APICalls: [
+    "RemoteEncrypt: 127.0.0.1,8081, enc, ?pwd",
+    "QueryUserTbl: ?usr, ^encpwd",
+    "ValidateInt: ^retAffectedRows, gt, 0, $NOSUCHUSER",
+    "LogInUser: ?usr, ?expdays",
+    "QueryPermissionTbl: ^permission_id",
+    "ValidateInt: ^permissions, gt, 256, $USERFORBIDDEN",
+    "(SaveRows)GetMultiRows: QueryAPPTASKSMultiByName $$ ?usr"]
